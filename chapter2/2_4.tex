@@ -1,0 +1,64 @@
+\subsection*{Problem 2-4 Inversions}
+
+\begin{enumerate}
+
+	\item	$(1, 5), (2, 5), (3, 5), (4, 5), (3, 4)$
+	\item	$\{n, n - 1, n - 2, \twodots, 2, 1\}$ \\
+		总共$\binom{n}{2}=n(n-1)/2$对inversions
+	\item	Insertion-Sort每交换一对元素，就消除一对原有序列中的inversion，所以所以Insertion-Sort的运行时间和inversions的对数是同数量级的
+	\item	$N$个元素组成的序列，最坏运行时间为$\Theta(n\log{n})$，找出序列inversions的对数 \\
+		\begin{codebox}
+		\Procname{$\proc{Count-Inversions}(A, left, right)$}
+		\li	$\id{inversions} \gets 0$
+		\li	\If $left < right$
+		\li	\Then
+				$mid \gets \lfloor (left + right) / 2 \rfloor$
+		\li		$\id{inversions} \gets \id{inversions} + \proc{Count-Inversions}(A, left, mid)$
+		\li		$\id{inversions} \gets \id{inversions} + \proc{Count-Inversions}(A, mid + 1, right)$
+		\li		$\id{inversions} \gets \id{inversions} + \proc{Merge-Inversions}(A, left, mid, right)$
+			\End
+		\li	\Return $\id{inversions}$
+		\end{codebox}
+		
+		
+		\begin{codebox}
+		\Procname{$\proc{Merge-Inversions}(A, left, mid, right)$}
+		\li	$n_1 \gets mid - left + 1$
+		\li	$n_2 \gets right - mid$
+		\li	Let $L[1 \twodots n_1+1]$ and $R[1 \twodots n_2 + 1]$ be new arrays
+		\li	\For $i \gets 1$ \To $n_1$
+		\li	\Do
+				$L[i] \gets A[left + i - 1]$
+			\End
+		\li	\For $i \gets 1$ \To $n_2$
+		\li	\Do
+				$R[i] \gets A[mid + i]$
+			\End
+		\li	$L[n_1 + 1] \gets R[n_2 + 1] \gets \infty$
+		\li	$i \gets j \gets 1$
+		\li	$\id{inversions} \gets 0$
+		\li	$\id{counted} \gets \const{False}$
+		\li	\For $k \gets left$ \To $right$
+		\li	\Do
+				\If $\id{counted} \gets \const{False}$ and $L[i] > R[j]$
+		\li		\Then
+					$\id{inversions} \gets \id{inversions} + n_1 - i + 1$
+		\li			$\id{counted} \gets \const{True}$
+				\End
+		\li		\If $L[i] \leq R[j]$
+		\li		\Then
+					$A[k] \gets L[i]$
+		\li			$i \gets i + 1$
+		\li		\ElseNoIf
+					$A[k] \gets R[j]$
+		\li			$j \gets j + 1$
+		\li			$\id{counted} \gets \const{False}$
+				\End
+			\End
+		\li	\Return $\id{inversions}$
+		\end{codebox}
+		
+		Answer = Count-Inversions(A, 1, n) \\
+		算法的最坏运行时间与Merge-Sort相同，即$\Theta(n\log{n})$
+\end{enumerate}
+

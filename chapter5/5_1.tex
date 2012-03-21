@@ -1,0 +1,11 @@
+\subsection*{Problem 5-1 Probabilistic counting}
+\begin{enumerate}
+	\item	$X_i(1 \leq i \leq n)$表示在第$i$次增加操作时计数器增加的值，$V_i$表示在$i$次增加操作后计数器表示的值 \\ \\
+		$V_n=\sum_{i=1}^{n}{X_i}$ \\ \\
+		$E[V_n]=E[\sum_{i=1}^{n}{X_i}]=\sum_{i=1}^{n}{E[X_i]}$ \\ \\
+		而$E[X_i]=0 \cdot (1 - \frac{1}{n_{i + 1} - n_i} + (n_{i + 1}-n_i) \cdot \frac{1}{n_{i + 1} - n_i}) = 1$，即$E[V_n]=n$
+	\item	$X_i$两两独立，所以$Var[V_n]=Var[X_1] + Var[X_2] + \twodots + Var[X_n]$ \\ \\
+		$Var[X_i] = E[X_i^2] - E^2{[X_i]}=((0^2 \cdot \frac{99}{100}) + (100^2 \cdot \frac{1}{100})) - 1^2 = 99$ \\ \\
+		所以$Var[V_n]=99n$
+\end{enumerate}
+

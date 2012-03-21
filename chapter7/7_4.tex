@@ -1,0 +1,23 @@
+\subsection*{Problem 7-4 Stack depth for quicksort}
+\begin{enumerate}
+	\item	(Omit!)
+	\item	在Worst-Case的情况下，每次$q = r$，所以对于$n$个元素的序列，Stack的深度最多为$\Theta(n)$
+	\item	The worst-case stack depth is $\Theta(\log n)$, and the expected running time is $\mathcal{O}(n \log n)$
+		\begin{codebox}
+		\Procname{$\proc{Tail-Recursive-Quicksort'}(A, p, r)$}
+		\li	\While $p < r$
+		\li	\Do
+				\Comment Partition and sort the small subarray first
+		\li		$\id{q} \gets \proc{Partition}(A, p, r)$
+		\li		\If $\id{q} - p < r - \id{q}$
+		\li		\Then
+					$\proc{Tail-Recursive-Quicksort'}(A, p, q - 1)$
+		\li			$p \gets \id{q} + 1$
+		\li		\ElseNoIf
+					$\proc{Tail-Recursive-Quicksort'}(A, q + 1, r)$
+		\li			$r \gets \id{q} - 1$
+				\End
+			\End
+		\end{codebox}
+\end{enumerate}
+

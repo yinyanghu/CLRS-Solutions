@@ -1,0 +1,23 @@
+\subsection*{Problem 7-3 Alternative quicksort analysis}
+\begin{enumerate}
+	\item	$E[X_i] = 1 / n$
+	\item
+		\begin{equation} \notag
+			E[T(n)] = E[\sum_{q = 1}^n X_q(T(q - 1) + T(n - q) + \Theta(n))]
+		\end{equation}
+	\item
+		\begin{equation} \notag
+			E[T(n)] = \frac{2}{n} \sum_{q = 2}^{n - 1}E[T(q)] + \Theta(n)
+		\end{equation}
+	\item
+		\begin{equation} \notag
+		\begin{aligned}
+			\sum_{k = 2}^{n - 1} k \log k & \leq \sum_{k = 1}^{\lceil \frac{n}{2} \rceil - 1} k \log k + \sum_{k = \lceil \frac{n}{2} \rceil}^n k \log k \\
+			& \leq \frac{(\frac{n}{2})^2}{2} \log \frac{n}{2} + \frac{(\frac{n}{2} + n) \frac{n}{2}}{2} \log n \\
+			& = \frac{n^2}{8} \log n - \frac{n^2}{8} + \frac{3}{8} n^2 \log n \\
+			& = \frac{1}{2} n^2 \log n - \frac{n^2}{8}
+		\end{aligned}
+		\end{equation}
+	\item	$E[T(n)] = \Theta(n \log n)$
+\end{enumerate}
+

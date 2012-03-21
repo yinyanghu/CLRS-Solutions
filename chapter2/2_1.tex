@@ -1,0 +1,10 @@
+\subsection*{Problem 2-1 Insertion sort on small arrays in merge sort}
+
+\begin{enumerate}
+	\item	对于$k$个元素插入排序的最坏时间为 $\Theta(k^2)$,所以排序$n/k$个sublists的总最坏时间为$\Theta(k^2n/k)=\Theta(nk)$
+	\item	如果用Merge Sort原始的合并方法，即每次从$n/k$个sublists中找到最小的然后Copy到return的数组中，所需要的最坏时间为$\Theta(n(n/k))=\Theta(n^2/k)$ \\
+		如果想在$\Theta(n\log(n/k))$的时间内完成合并，我们可以对$n/k$个sublists进行一对一对的合并，直到最后合成一个表，所需要的时间即为$\Theta(n\log(n/k))$
+	\item	当$k=\Theta(\log{n})$时，有$\Theta(nk+n\log(n/k))=\Theta(nk+n\log{n}-n\log{k})=\Theta(2n\log{n}-n\log{\log{n}})=\Theta(n\log{n})$，即和Standard Merge Sort的渐进运行时间相同
+	\item	实际中，$k$是最大的list长度，使得Insertion Sort比Merge Sort快
+\end{enumerate}
+

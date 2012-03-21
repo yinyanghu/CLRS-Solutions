@@ -1,0 +1,33 @@
+\subsection*{Problem 8-2 Sorting in place in linear time}
+\begin{enumerate}
+	\item	Counting-Sort
+	\item	Quicksort-Partition
+	\item	Insertion-Sort
+	\item	(a) Yes (b) No (c) No
+	\item	use $\mathcal{O}(k)$ outside the input array
+		\begin{codebox}
+		\Procname{$\proc{Counting-Sort}(A, k)$}
+		\li	\Comment let $C[0 \twodots k]$ be a new array
+		\li	\For $i \gets 0$ \To $k$
+			\Do
+		\li		$C[i] \gets 0$
+			\End
+		\li	\For $i \gets 1$ \To $\attrib{A}{length}$
+			\Do
+		\li		$C[A[i]] = C[A[i]] + 1$	
+			\End
+		\li	\Comment $C[i]$ now contains the number of elements equal to $i$
+		\li	$p \gets 0$
+		\li	\For $i \gets 0$ \To $k$
+			\Do
+		\li		\For $j \gets 1$ \To $C[i]$
+				\Do
+		\li			$p \gets p + 1$
+		\li			$A[p] \gets i$
+				\End
+			\End
+		\end{codebox}
+		Not stable, in place, in $\mathcal{O}(n + k)$
+	\item	\bfseries{Extension: Is there exist an algorithm s.t. stable, in place, runs in $\mathcal{O}(n)$ time ?}
+\end{enumerate}
+

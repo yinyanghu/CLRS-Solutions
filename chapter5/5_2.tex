@@ -1,0 +1,33 @@
+\subsection*{Problem 5-2 Searching an unsorted array}
+\begin{enumerate}
+	\item	算法如下:
+		\begin{codebox}
+		\Procname{$\proc{RANDOM-SEARCH}(\id{A}, x)$}
+		\li	$\id{B} \gets \emptyset$
+		\li	\While $\id{B} \neq \id{A}$
+		\li	\Do
+				$i \gets \proc{RANDOM}(1, n)$
+		\li		\If $\id{A}[i] \gets x$
+		\li		\Then
+					\Return $i$
+				\End
+		\li		$\id{B} \gets \id{B} \cup \id{A}[i]$
+			\End
+		\li	\Return Null
+		\end{codebox}
+	\item	期望在第$n$次找到$x$
+	\item	期望在第$n/k$次找到$x$
+	\item	期望在$\Theta(n \log n)$次找到$A$中的所有元素
+	\item	Average-Case: $\frac{n+1}{2}$， Worst-Case: $n$
+	\item	Average-Case:
+		\begin{equation} \notag
+			\sum_{i = 1}^{n - k + 1} \frac{i \binom{n - i}{k - 1}}{\binom{n}{k}} = \frac{\binom{n + 1}{k + 1}}{\binom{n}{k}} = \frac{n + 1}{k + 1}
+		\end{equation}
+		Worst-Case: $n - k + 1$
+	\item	Average-Case:$n$， Worst-Case:$n$
+	\item	$K = 0$: Worst-Case: $n$, Expected: $n$ \\ \\
+		$K = 1$: Worst-Case: $n$, Expected: $\frac{n+1}{2}$ \\ \\
+		For $K \geq 1$, Worst-Case: $n - k + 1$, Expected: $\frac{n + 1}{k + 1}$
+	\item	Scramble-Search
+\end{enumerate}
+

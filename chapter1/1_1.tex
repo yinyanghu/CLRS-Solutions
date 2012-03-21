@@ -1,0 +1,21 @@
+\subsection*{Problem 1-1 Comparison of running times}
+
+\newsavebox{\tablebox}
+\begin{lrbox}{\tablebox}
+	\begin{tabular}{c | c | c | c | c | c | c | c |}
+		 & 1 second & 1 minute & 1 hour & 1 day & 1 month & 1 year & 1 century \\\hline
+		$\log{n}$ & $2^{10^6}$ & $2^{6 \cdot 10^7}$ & $2^{36 \cdot 10^8}$ & $2^{864 \cdot 10^8}$ & $2^{2592 \cdot 10^9}$ & $2^{94608 \cdot 10^{10}}$ & $2^{94608 \cdot 10^{12}}$ \\\hline
+		$\sqrt{n}$ & $10^{12}$ & $36 \cdot 10^{14}$ & $1296 \cdot 10^{16}$ & $746496 \cdot 10^{16}$ & $6718464 \cdot 10^{18}$ & $8950673664 \cdot 10^{20}$ & $8950673664 \cdot 10^{24}$ \\\hline
+		$n$ & $10^6$ & $6 \cdot 10^7$ & $36 \cdot 10^8$ & $864 \cdot 10^8$ & $2592 \cdot 10^9$ & $94608 \cdot 10^{10}$ & $94608 \cdot 10^{12}$ \\\hline
+		$n\log{n}$ & $62746$ & $2801417$ & $13 \cdot 10^7$ & $27 \cdot 10^8$ & $71 \cdot 10^9$ & $80 \cdot 10^{10}$ & $69 \cdot 10^{12}$ \\\hline
+		$n^2$ & $10^3$ & $24494897$ & $6 \cdot 10^4$ & $293938$ & $1609968$ & $30758413$ & $307584134$ \\\hline
+		$n^3$ & $10^2$ & $391$ & $1532$ & $4420$ & $13736$ & $98169$ & $455661$ \\\hline
+		$2^n$ & $19$ & $25$ & $31$ & $36$ & $41$ & $49$ & $56$ \\\hline
+		$n!$ & $9$ & $11$ & $12$ & $13$ & $15$ & $17$ & $18$ \\\hline
+	\end{tabular}
+\end{lrbox}
+
+\begin{center}
+\resizebox{1.2\textwidth}{!}{\usebox{\tablebox}}
+\end{center}
+

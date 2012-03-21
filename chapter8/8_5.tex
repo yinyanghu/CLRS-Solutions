@@ -1,0 +1,11 @@
+\subsection*{Problem 8-5 Average sorting}
+\begin{enumerate}
+	\item	Ordinary Sorting
+	\item	2, 1, 4, 3, 6, 5, 8, 7, 10, 9
+	\item	(Omit!)
+	\item	Shell-Sort, i.e. We split the $n$-element array into $k$ part. For each part, we use Insertion-Sort(or Quicksort) to sort in $\mathcal{O}(n / k \log (n / k))$ time. Therefore, the total running time is $k \cdot \mathcal{O}(n / k \log (n / k)) = \mathcal{O}(n \log (n / k))$
+	\item	Using a heap, we can sort a $k$-sorted array of length $n$ in $\mathcal{O}(n \log k)$ time. \\
+		(The height of the heap is $\log k$, the solution to Exercise 6.5-9)
+	\item	The lower bound of sorting each part is $\Omega(n / k \log (n / k))$, so the total lower bound is $\Omega(n \log (n / k))$. Since $k$ is a constant, therefore $\Omega(n \log (n / k)) = \Omega(n \log n)$
+\end{enumerate}
+

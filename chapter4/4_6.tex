@@ -1,0 +1,9 @@
+\subsection*{Problem 4-6 Monge arrays}
+\begin{enumerate}
+	\item	由定义可证
+	\item	$A[2,3]=5$
+	\item	若存在$f(i) > f(i + 1)$，即存在$A[i, j] + A[i + 1, k] > A[i, f(i)] + A[i + 1, f(i + 1)]$，所以不满足Monge array的定义，所以不存在$f(i) > f(i + 1)$，即$f(1) \leq f(2) \leq \twodots \leq f(m)$
+	\item	由(c)易得该时间为$\mathcal{O}(m + n)$算法
+	\item	$T(m)=T(m/2)+\mathcal{O}(m + n) \Rightarrow T(m)=\mathcal{O}(m + n \log m)$
+\end{enumerate}
+

@@ -1,0 +1,18 @@
+\subsection*{Problem 6-3 Young tableaus}
+\begin{enumerate}
+	\item
+		\begin{tabular}{llll}
+			2 & 3 & 4 & 5 \\
+			8 & 9 & $\infty$ & $\infty$ \\
+			12 & 14 & $\infty$ & $\infty$ \\
+			16 & $\infty$ & $\infty$ & $\infty$ \\
+		\end{tabular}
+	\item	(Omit!)
+	\item	类似用Max-Heapify的方法，用$\mathcal{O}(m + n)$来维护Young Tableau的结构
+	\item	用$\mathcal{O}(m + n)$的时间来找到一个不存在的元素，即$\infty$；将元素插入到这个位置，然后用$\mathcal{O}(m + n)$的时间来维护Young Tableau的结构
+	\item	Young-Tableau-Insert:$\mathcal{O}(n^3)$ \\
+		Young-Tableau-Extract-Min:$\mathcal{O}(n^3)$ \\
+		Total:$\mathcal{O}(n^3)$
+	\item	注意$m \times n$Young Tableau的左下角的元素，以此元素为根，会形成一个类似Binary Search Tree的结构，算法和BST相同，所以运行时间即结构的高度$\mathcal{O}(m + n)$
+\end{enumerate}
+

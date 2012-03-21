@@ -1,0 +1,14 @@
+\subsection*{Problem 7-5 Median-of-3 partition}
+\begin{enumerate}
+	\item	$P_i = \frac{6(i - 1)(n - i)}{n(n - 1)(n - 2)}$
+	\item	概率从原来的$\frac{1}{n}$增长为
+		\begin{equation} \notag
+			\lim_{n \rightarrow \infty} P_{\lfloor (n + 1) / 2 \rfloor} = \frac{3}{2} \cdot \frac{1}{n}
+		\end{equation}
+	\item
+		\begin{equation} \notag
+			\sum_{i = \frac{n}{3}}^{\frac{2n}{3}} P_i \approx \int_{\frac{n}{3}}^{\frac{2n}{3}} P_i = \frac{13}{27}
+		\end{equation}
+	\item	每次$\proc{Partition}$只增加$\mathcal{O}(1)$的操作，所以总的复杂度依然是$\Theta(n \log n)$，Median-of-3 method只影响常数时间
+\end{enumerate}
+

@@ -1,0 +1,74 @@
+\subsection*{Problem 7-6 Fuzzy sorting of intervals}
+\begin{enumerate}
+	\item	A randomized algorithm for fuzzy-sorting $n$ intervals
+		\begin{codebox}
+		\Procname{$\proc{Find-Intersection}(A, B, p, s, a, b)$}
+		\li	$i \gets \proc{Random}(p, s)$
+		\li	exchange $A[i]$ with $A[s]$
+		\li	exchange $B[i]$ with $B[s]$
+		\li	$a \gets A[s]$
+		\li	$b \gets B[s]$
+		\li	\For $i \gets p$ \To $s - 1$
+		\li	\Do
+				\If $A[i] \leq b$ and $B[i] \geq a$
+		\li		\Then
+					\If $A[i] > a$
+		\li			\Then
+						$a \gets A[i]$
+		\li			\ElseIf $B[i] < b$
+		\li			\Then
+						$b \gets B[i]$
+					\End
+				\End
+			\End
+		\end{codebox}
+		
+		\begin{codebox}
+		\Procname{$\proc{Partition-Right}(A, B, a, p, s)$}
+		\li	$i \gets p - 1$
+		\li	\For $j \gets p$ \To $s - 1$
+		\li	\Do
+				\If $A[j] \leq a$
+		\li		\Then
+					$i \gets i + 1$
+		\li			exchange $A[i]$ with $A[j]$
+		\li			exchange $B[i]$ with $B[j]$
+				\End
+			\End
+		\li	exchange $A[i + 1]$ with $A[s]$
+		\li	exchange $B[i + 1]$ with $B[s]$
+		\li	\Return i + 1
+		\end{codebox}		
+		
+		\begin{codebox}
+		\Procname{$\proc{Partition-Left-Middle}(A, B, b, p, r)$}
+		\li	$i \gets p - 1$
+		\li	\For $j \gets p$ \To $r - 1$
+		\li	\Do
+				\If $B[j] < b$
+		\li		\Then
+					$i \gets i + 1$
+		\li			exchange $A[i]$ with $A[j]$
+		\li			exchange $B[i]$ with $B[j]$
+				\End
+			\End
+		\li	exchange $A[i + 1]$ with $A[r]$
+		\li	exchange $B[i + 1]$ with $B[r]$
+		\li	\Return i + 1
+		\end{codebox}			
+		
+		\begin{codebox}
+		\Procname{$\proc{Fuzzy-Sort}(A, B, p, s)$}
+		\li	\If $p < s$
+		\li	\Then
+				$a \gets b \gets 0$
+		\li		$\proc{Find-Intersection}(A, B, p, s, a, b)$
+		\li		$r \gets \proc{Partition-Right}(A, B, a, p, s)$
+		\li		$q \gets \proc{Partition-Left-Middle}(A, B, b, p, r)$
+		\li		$\proc{Fuzzy-Sort}(A, B, p, q - 1)$
+		\li		$\proc{Fuzzy-Sort}(A, B, r + 1, s)$
+			\End
+		\end{codebox}
+	\item	The algorithm runs in expected time $\Theta(n \log n)$ in general, but runs in expected time $\Theta(n)$ when all of the intervals overlap. Since when all of the intervals overlap, the procedure $\proc{Fuzzy-Sort}$ just calls the procedure $\proc{Find-Intersection}$ only once and then return. Therefore, the algorithm runs in expected time $\Theta(n)$.
+\end{enumerate}
+

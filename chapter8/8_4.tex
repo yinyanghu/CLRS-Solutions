@@ -1,0 +1,46 @@
+\subsection*{Problem 8-4 Water jugs}
+\begin{enumerate}
+	\item	$n$个Red jug和$n$个Blue jug之间最多比较$\Theta(n^2)$次
+	\item	用Decision Tree的模型，对于树中的每个节点，表示一个Red jug和Blue jug的比较；从每个节点会引出三条边，分别代表Red jug大、Blue jug大、一样大，树中的叶节点即表示一个确定的结果 \\
+		对于$n$个Red jug和$n$个Blue jug之间最多有$n!$种组合方式，所以Decision Tree的高度为$h = \log(n!) = \Omega(n \log n)$
+	\item	the expected running time is $\mathcal{O}(n \log n)$, and the worst-case running time is $\mathcal{O}(n^2)$
+				\begin{codebox}
+		\Procname{$\proc{Partition-Red}(R, p, r, x)$}
+		\li	$i \gets p - 1$
+		\li	\For $j \gets p$ \To $r$
+		\li	\Do
+				\If $R[j] \leq x$
+		\li		\Then
+					$i \gets i + 1$
+		\li			exchange $R[i]$ with $R[j]$
+				\End
+			\End
+		\li	\Return i
+		\end{codebox}		
+		
+		\begin{codebox}
+		\Procname{$\proc{Partition-Blue}(B, p, r, x)$}
+		\li	$i \gets p - 1$
+		\li	\For $j \gets p$ \To $r$
+		\li	\Do
+				\If $B[j] \leq x$
+		\li		\Then
+					$i \gets i + 1$
+		\li			exchange $B[i]$ with $B[j]$
+				\End
+			\End
+		\end{codebox}			
+		
+		\begin{codebox}
+		\Procname{$\proc{Match-Jugs}(R, B, p, r)$}
+		\li	\If $p < r$
+		\li	\Then
+				$k \gets \proc{Random}(p, r)$
+		\li		$q \gets \proc{Partition-Red}(R, p, r, B[k])$
+		\li		$\proc{Partition-Blue}(B, p, r, A[q])$
+		\li		$\proc{Match-Jugs}(R, B, p, q - 1)$
+		\li		$\proc{Match-Jugs}(R, B, q + 1, r)$
+			\End
+		\end{codebox}
+\end{enumerate}
+

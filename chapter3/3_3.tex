@@ -1,0 +1,26 @@
+\subsection*{Problem 3-3 Ordering by asymptotic growth rates}
+\begin{enumerate}
+
+\item	$f(n)$增长率级别如下表： 
+	\begin{lrbox}{\tablebox}
+		\begin{tabular}{| l | l | l | l | l | l |} \hline
+			$2^{2^{n + 1}}$ & $2^{2^n}$ & $(n + 1)!$ & $n!$ & $e^n$ & $n \cdot 2^n$ \\\hline
+			$2^n$ & $(3/2)^n$ & \multicolumn{2}{l |}{$n^{\log{\log n}} = (\log n)^{\log n}$} & $(\log{n})!$ & $n^3$ \\\hline
+			\multicolumn{2}{| l |}{$4^{\log n} = n^2$} & \multicolumn{2}{l |}{$n \log n$ and $\log(n!)$} & \multicolumn{2}{l |}{$2^{\log n} = n$} \\\hline
+			$(\sqrt{2})^{\log n}$ & $2^{\sqrt{2 \log n}}$ & $\log^2 n$ & $\ln n$ & $\sqrt{\log n}$ & $\ln{\ln n}$ \\\hline
+			$2^{\log^* n}$ & \multicolumn{2}{l |}{$\log^* n$ and $\log^*(\log n)$} & $\log(\log^*n)$ & \multicolumn{2}{l |}{$n^{1/ \log n}$ and $1$} \\\hline
+		\end{tabular}
+	\end{lrbox}
+
+
+	\begin{center}
+	\resizebox{1\textwidth}{!}{\usebox{\tablebox}}
+	\end{center}
+
+
+\item	\begin{equation} \notag
+		f(n)=2^{2^{(n + 1)\cdot \cos n}}
+	\end{equation}
+
+\end{enumerate}
+

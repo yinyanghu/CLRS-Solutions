@@ -1,0 +1,12 @@
+\subsection*{Problem 6-1 Building a heap using insertion}
+\begin{enumerate}
+	\item	No, counterexample: ${1, 2, 3}$
+	\item	很明显Worst-Case的上界为$\mathcal{O}(n \log n)$，所以我们主要来证明下界 \\ \\
+		\begin{equation} \notag
+		\begin{aligned}
+		T(n) & = \sum_{i = 1}^{n} \Theta(\lfloor \log i \rfloor) \\ & \geq \sum_{i = \lceil \frac{n}{2} \rceil}^{n} \Theta(\lfloor \log i \rfloor) \\ & \geq \sum_{i = \lceil \frac{n}{2} \rceil}^{n} \Theta(\lfloor \log(\lceil \frac{n}{2} \rceil) \rfloor) \\ & = \sum_{i = \lceil \frac{n}{2} \rceil}^{n} \Theta(\lfloor \log n - 1 \rfloor) = \Omega(n \log n)
+		\end{aligned}
+		\end{equation}
+		所以，Worst-Case的界为$\Theta(n \log n)$		
+\end{enumerate}
+

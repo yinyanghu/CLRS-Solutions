@@ -1,0 +1,17 @@
+\subsection*{Problem 8-3 Sorting variable-length items}
+\begin{enumerate}
+	\item	Let $m_i$ be the number of integers with $i$ digits, for $i = 1, 2, \twodots, n$, we have $\sum_{i = 1}^n i \cdot m_i = n$
+		\begin{itemize}
+			\item[*]	Counting every number's digits.....$\mathcal{O}(n)$
+			\item[*]	Sort the integers by number of digits(Counting-Sort).....$\mathcal{O}(n)$
+			\item[*]	Use Radix-Sort to sort each group of integers with the same length.....$\mathcal{O}(n)$
+		\end{itemize}
+		Therefore, the total running time is $\mathcal{O}(n)$
+	\item	\begin{itemize}
+			\item[*]	Use Counting-Sort to sort the strings by the first letter
+			\item[*]	If the first letter of some strings are same, then put these strings into a group as well as remove the first letter
+			\item[*]	Recursion sort until each group has only one string
+		\end{itemize}
+		The running time is $\mathcal{O}(n)$
+\end{enumerate}
+

@@ -1,0 +1,8 @@
+\subsection*{Problem 8-6 Lower bound on merging sorted lists}
+\begin{enumerate}
+	\item	$\binom{2n}{n}$
+	\item	建立一个长度为2的比较队列，每个list中的元素至少进入队列一次，出队列一次，所以至少$2n - o(n)$次比较
+	\item	利用上述比较队列的模型，易知比较队列中的元素一定来自不同的队列，所以如果两个在已排好序列的连续的元素一定在在比较队列中出现过，所以它们之间比较过
+	\item	每个list中的元素至少进入队列一次，出队列一次，所以下界是$2n - 1$
+\end{enumerate}
+

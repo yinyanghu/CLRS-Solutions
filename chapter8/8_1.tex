@@ -1,0 +1,27 @@
+\subsection*{Problem 8-1 Probabilistic lower bounds on comparison sorting}
+\begin{enumerate}
+	\item	reachable leaves: each of the $n!$ possible permutations is the input with the probability $1 / n!$ \\
+		unreachable leaves: the probability is $0$
+	\item	Let $d_T(x) =$ depth of node $x$ in tree $T$
+		\begin{equation} \notag
+		\begin{aligned}
+			D(T) & = \sum_{x \in leaves(T)} d_T(x) \\ 
+			& = \sum_{x \in leaves(LT)} d_T(x) + \sum_{x \in leaves(RT)} d_T(x) \\
+			& = \sum_{x \in leaves(LT)} (d_{LT}(x) + 1) + \sum_{x \in leaves(RT)} (d_{RT}(x) + 1) \\
+			& = \sum_{x \in leaves(LT)} d_{LT}(x) + \sum_{x \in leaves(RT)} d_{RT}(x) + \sum_{x \in leaves(T)} 1 \\
+			& = D(LT) + D(RT) + k
+		\end{aligned}
+		\end{equation}
+	\item	A decision tree $T$ with $k$ leaves that the left tree has $i$ leaves and the right tree has $k - i$ leaves.
+		\begin{equation} \notag
+			d(k) = \min_{1 \leq i \leq k - 1} \{ d(i) + d(k - i) + k \}
+		\end{equation}
+	\item	Using derivative, it's easy to have the function $i \log i + (k - i) \log (k - i)$ is minimized at $i = k / 2$ \\
+		When $i = k / 2$, using Master Theorem, we have $d(k) = \Omega(k \log k)$
+	\item	Let $k = n!$, then $D(T_A) \geq d(k) = \Omega(k \log k)$, therefore $D(T_A) = \Omega(n! \log n!)$
+		Since the $n!$ permutations have equal probability $1 / n!$, the expected time to sort $n$ random elements is
+		\begin{equation} \notag
+			\frac{\Omega(n! \log (n!))}{n!} = \Omega(\log n!) = \Omega(n \log n)
+		\end{equation}
+\end{enumerate}
+

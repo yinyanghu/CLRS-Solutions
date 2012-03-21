@@ -1,0 +1,27 @@
+\subsection*{Problem 2-3 Correctness of Horner’s rule}
+
+\begin{enumerate}
+	\item	$\Theta(n)$ 
+	\item	朴素算法的运行时间为$\Theta(n^2)$ \\
+		\begin{codebox}
+		\Procname{$\proc{Naive-Polynomial-Evaluation}(P(x), x)$}
+		\li	$\id{y} \gets 0$
+		\li	\For $i \gets 0$ \To $n$
+		\li	\Do
+				$\id{t} \gets 1$
+		\li		\For $j \gets 1$ \To $i$
+		\li		\Do
+					$\id{t} \gets \id{t} \cdot x$
+				\End
+		\li		$\id{y} \gets \id{y} + \id{t} \cdot a_i$
+			\End
+		\li	\Return $\id{y}$
+		\end{codebox}		
+		
+	\item	\begin{equation} \notag
+		y = \sum_{k = 0}^{n}a_kx^k
+		\end{equation}
+		(Omit!)
+	\item	(Omit!)
+\end{enumerate}
+

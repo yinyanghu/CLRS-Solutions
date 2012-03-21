@@ -1,0 +1,21 @@
+\subsection*{Problem 3-6 Iterated functions}
+\begin{lrbox}{\tablebox}
+	\begin{tabular}{ l  l | l |}
+		$f(n)$ & $c$ & $f^*_c(n)$ \\\hline
+		$n - 1$ & $0$ & $n$ \\\hline
+		$\log n$ & $1$ & $\log^*(n)$ \\\hline
+		$n / 2$ & $1$ & $\lceil \log n \rceil$ \\\hline
+		$n / 2$ & $2$ & $\lceil \log n \rceil - 1$ \\\hline
+		$\sqrt{n}$ & $2$ & $\geq \log{\log n}$ \\\hline
+		$\sqrt{n}$ & $1$ & $\infty$ \\\hline
+		$n^{1/3}$ & $2$ & $\geq \frac{\log{\log n}}{\log 3}$ \\\hline
+		$n/\log n$ & $2$ & $\mathcal{O}(\log n)$ \\\hline
+		
+	\end{tabular}
+\end{lrbox}
+
+
+\begin{center}
+\resizebox{0.4\textwidth}{!}{\usebox{\tablebox}}
+\end{center}
+

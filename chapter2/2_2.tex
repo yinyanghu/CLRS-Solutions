@@ -1,0 +1,25 @@
+\subsection*{Problem 2-2 Correctness of bubblesort}
+
+\begin{enumerate}
+	\item	我们需要证明$A'$是$A$的一个排列
+	
+	\item	{\bfseries Loop invariant:} \\
+		对于每次开始迭代时，$A[j]=\min{\{ A[k]:j \leq k \leq n \}}$，并且，显然$A[j \twodots n]$是初始时$A[j \twodots n]$的一个排列 \\
+		{\bfseries Initialization:} \\
+		初始时，$j=n$，$A[j \twodots n]$ 仅有一个元素 $A[n]$，循环不变式显然成立 \\
+		{\bfseries Maintenance:} \\
+		根据循环不变式，$A[j]$是$A[j \twodots n]$的最小元素；如果$A[j - 1] > A[j]$，那么通过交换$A[j]$ 和$A[j - 1]$，使得$A[j - 1]$是$A[j - 1 \twodots n]$的最小值；有于在迭代开始之前，$A[j \twodots n]$是初始时$A[j \twodots n]$的一个排列，而在迭代中仅仅是交换了$A[j - 1]$和$A[j]$，所以$A[j - 1 \twodots n]$必然也是初始时$A[j - 1 \twodots n]$的一个排列；进入下一次迭代之前，$j$的值减小为$j - 1$ \\
+		{\bfseries Termination:} \\
+		当$j = i$时，循环结束；$A[i]=\min{\{ A[k]:i \leq k \leq n \}}$，并且$A[i \twodots n]$是初始时$A[i \twodots n]$的一个排列
+		
+	\item	{\bfseries Loop invariant:} \\
+		对于每次开始迭代时，$A[1 \twodots i - 1]$包含初始时$A[1 \twodots n]$的最小的$i - 1$个元素，并且$A[1] \leq A[2] \leq \twodots \leq A[i - 1]$，而$A[i \twodots n]$包含初始时$A$中剩余的$n - i + 1$个元素 \\
+		{\bfseries Initialization:} \\
+		初始时，$i=1$，$A[1 \twodots i - 1]$ 是空集，循环不变式显然成立 \\
+		{\bfseries Maintenance:} \\
+		根据循环不变式，$A[1 \twodots i - 1]$包含初始时$A[1 \twodots n]$的最小的$i - 1$个元素，并且$A[1] \leq A[2] \leq \twodots \leq A[i - 1]$；而执行lines 2-4使得$A[i]$是$A[i \twodots n]$中的最小的一个，所以现在$A[1 \twodots i]$是初始时$A[1 \twodots i]$中元素的非递减排列；$A[i + 1 \twodots n]$包含初始时$A$中剩余的$n - i$个元素\\
+		{\bfseries Termination:} \\
+		当$i = n$时，循环结束；$A[1 \twodots i - 1]$即$A[1 \twodots n - 1]$是初始时$A[1 \twodots n - 1]$的非递减排列，且包含$A$中最小的$n - 1$个元素；显然，$A[n]$是$A$中最大的元素，所以$A[1 \twodots n]$是初始$A$排序后的序列
+	\item	Bubble Sort最坏运行时间为$\Theta(n^2)$，和Insertion Sort的运行时间一样
+\end{enumerate}
+

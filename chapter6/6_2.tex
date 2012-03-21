@@ -1,0 +1,18 @@
+\subsection*{Problem 6-2 Analysis of d-ary heaps}
+\begin{enumerate}
+	\item	index $i$, $j$-th child $(1 \leq j \leq d)$
+		\begin{codebox}
+		\Procname{$\proc{D-ary-Parent}(i)$}
+		\li	\Return $\lfloor (i - 2) / d + 1 \rfloor$
+		\end{codebox}
+		
+		\begin{codebox}
+		\Procname{$\proc{D-ary-Child}(i, j)$}
+		\li	\Return $d(i - 1) + j + 1$
+		\end{codebox}
+	\item	$\Theta(\log_d n)$
+	\item	和Heap-Extract-Max类似，只是在Max-Heapify中，由每次的比较2个元素找最大值，变成比较$d$个元素找最大值，所以运行时间为$\mathcal{O}(d \log_d n)$
+	\item	和Max-Heap-Insert类似，运行时间为$\mathcal{O}(\log_d n)$
+	\item	和Heap-Increase-Key类似，运行时间为$\mathcal{O}(\log_d n)$
+\end{enumerate}
+

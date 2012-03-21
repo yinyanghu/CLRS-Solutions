@@ -1,0 +1,46 @@
+\subsection*{Problem 7-2 Quicksort with equal element values}
+\begin{enumerate}
+	\item	$\mathcal{O}(n \log n)$
+	\item	two methods: \\ \\
+		Method 1:
+		\begin{codebox}
+		\Procname{$\proc{Partition'}(A, p, r)$}
+		\li	$\id{x} \gets A[p]$
+		\li	$\id{i} \gets p - 1$
+		\li	$\id{j} \gets r + 1$
+		\li	\While \const{True}
+		\li	\Do
+				\Repeat
+		\li			$\id{j} \gets \id{j} - 1$
+		\li		\Until $A[j] < \id{x}$
+		\li		\Repeat
+		\li			$\id{i} \gets \id{i} + 1$
+		\li		\Until $A[i] > \id{x}$
+		\li		\If $i < j$
+		\li		\Then
+					exchange $A[i]$ with $A[j]$
+		\li		\ElseNoIf
+					\Return $j, i$
+				\End
+			\End
+		\end{codebox}
+		
+		Method 2:
+		\begin{codebox}
+		\Procname{$\proc{Partition'}(A, p, r)$}
+		\li	$\id{i} \gets \id{j} \gets \proc{Partition}(A, p, r)$
+		\li	\While $i > 1$ and $A[i - 1] \gets A[i]$
+		\li	\Do
+				$\id{i} \gets \id{i} - 1$
+			\End
+		\li	\While $j < r$ and $A[j + 1] \gets A[j]$
+		\li	\Do
+				$\id{j} \gets \id{j} + 1$
+			\End
+		\li	\Return $i, j$
+		\end{codebox}
+		take $\Theta(r - p)$ time
+	\item	(Omit!)
+	\item	因为 $\proc{Quicksort'}$的比较次数一定少于$\proc{Quicksort}$，运行时间仍然为$\mathcal{O}(n \log n)$
+\end{enumerate}
+

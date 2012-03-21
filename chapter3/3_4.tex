@@ -1,0 +1,12 @@
+\subsection*{Problem 3-4 Asymptotic notation properties}
+\begin{enumerate}
+	\item	Wrong! 显然，$n = \mathcal{O}(n^2)$，但$n^2 \neq \mathcal{O}(n)$
+	\item	Wrong! 令$f(n)=n^2, g(n)=n$，则$\Theta(\min(f(n),g(n)))=\Theta(n)$，显然$f(n)+g(n)=n^2+n \neq \Theta(n)$
+	\item	Right! 因为$f(n)=\mathcal{O}(g(n))$且$\log(g(n)) \geq 1, f(n) \geq 1$ when $n \rightarrow \infty$，即$f(n) \leq cg(n) \Rightarrow \log(f(n)) \leq \log(cg(n))=\log c+\log(g(n))$，令$b=\log c + 1$，则$\log c+\log(g(n)) \leq b\log(g(n))$，即$\log(f(n))=\mathcal{O}(\log(g(n)))$
+	\item	Wrong! 令$f(n)=2n, g(n)=n$，我们有$f(n)=\mathcal{O}(g(n))$但$2^{f(n)}=2^{2n} \neq \mathcal{O}(2^{g(n)} = 2^n)$
+	\item	Wrong! 如果$f(n) < 1$
+	\item	Right! 因为对于正实数$c > 0$，$f(n) \leq cg(n) \Rightarrow 1/c \cdot f(n) \leq g(n)$
+	\item	Wrong! 令$f(n)=2^n$，则$f(n)=2^n \neq \Theta(f(n/2) = 2^{\sqrt n})$
+	\item	Right! $f(n) + o(f(n))=\Theta(\max(f(n), o(f(n))))=\Theta(f(n))$
+\end{enumerate}
+

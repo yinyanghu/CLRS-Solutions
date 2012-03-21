@@ -1,0 +1,25 @@
+\subsection*{Problem 8-7 The 0-1 sorting lemma and columnsort}
+\begin{enumerate}
+	\item	$A[p]$和$A[q]$一定都在错误的位置，且由定义有$A[p] < A[q]$，所以$B[p] = 0, B[q] = 1$
+	\item	由于$A[p]$是最小的错误位置元素，则$q < p$，即$(p > q, A[p] < A[q]) \Rightarrow (p > q, B[p] = 0 < B[q] = 1)$；又因为Alogrithm X是一个oblivious compare-exchange algorithm，即Algorithm X排序A的操作指令和排序B时是一样的，所以Algorithm X不能正确的排序$B$序列
+	\item	不管用什么算法来排序，排序后的结果都和一个oblivious compare-exchange algorithm执行之后的结果相同，所以我们可以认为columnsort是一个oblivious compare-exchange algorithm
+	\item	因为完成step 1的时候，所有的1都在底部，所以在完成step 2, 3之后，右边的列的1的个数一定大于等于左边的列的1的个数，而dirty row一定是由一些0和一些1组成；即1都连续的排在右边，0都连续的排在左边，所以至多($<$)有$s$ rows是dirty rows
+	\item	必然是从clean area of 0s开始，必然是在clean area of 1s结束；因为在step 3之后，至多有$s$ rows是dirty rows，所以中间的dirty area至多包含$s^2$个元素
+	\item	step 5的目的是保证每一列自身有序，step 6的目的是将整个array首尾连接 \\
+		因为$r / 2 \geq s^2$，又因为dirty area有至多$s^2$个元素，所以在step 5之后如果还未排好序，则一定是如下所示的这种情况
+		\begin{center}
+			\begin{tabular}{lll}
+				0 & 0 & 0 \\
+				0 & 0 & 0 \\
+				0 & 0 & 0 \\
+				0 & 0 & 1 \\
+				0 & 1 & 1 \\
+				0 & 1 & 1 \\
+			\end{tabular}
+		\end{center}
+		即存在两个相邻的列，左边的列是以1结尾，而右边的列以0开头；所以在step 7, 8之后，所有的array中元素都按column-major order排好
+	\item	如果$s$不能整除$r$，即对于every column在做变换的时候，至多产生2 dirty rows，即中间的0、1过度区域产生一个dirty row，最后一行产生一个dirty row；在step 3再排序之后，dirty cows的个数等于最多1的列和最少1的列相差1的个数，而对于1 column变换，即至多产生2 dirty rows，这2 rows中column之间的个数至多差1个，所以step 3之后dirty cows至多为$s$ \\
+		$r \geq 2s^2$
+	\item	如果$r \geq 2s^2$不成立，则可以通过填充无意义的元素(example. $\infty$)来使得$r \geq 2s^2$成立
+\end{enumerate}
+

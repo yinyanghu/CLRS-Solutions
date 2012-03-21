@@ -1,0 +1,19 @@
+\subsection*{Problem 7-1 Hoare partition correctness}
+\begin{enumerate}
+	\item	(Omit!)
+	\item	因为当Hoare-Partition执行时，$p \leq i < j \leq r$恒成立，所以$i,j$不会访问$A[p \twodots r]$以外的元素
+	\item	显然，当$i \geq j$时，Hoare-Partition结束，所以$p \leq j < r$
+	\item	当Hoare-Partition结束时，有$A[p \twodots j] \leq x \leq A[j + 1 \twodots r]$
+	\item	the QUICKSORT procedure to use HOARE-PARTITION 
+		\begin{codebox}
+		\Procname{$\proc{Quicksort'}(A, p, r)$}
+		\li	\If $p < r$
+		\li	\Then
+				$\id{q} \gets \proc{Hoare-Partition}(A, p, r)$
+		\li		$\proc{Quicksort'}(A, p, q)$
+		\li		$\proc{Quicksort'}(A, q + 1, r)$
+			\End		
+		\end{codebox}
+		
+\end{enumerate}
+

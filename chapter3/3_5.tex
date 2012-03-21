@@ -1,0 +1,23 @@
+\subsection*{Problem 3-5 Variations on $\mathcal{O}$ and $\Omega$}
+\begin{enumerate}
+	\item	\begin{equation} \notag
+			f(n)=\begin{cases}
+				\mathcal{O}(g(n)) \text{ \& } \overset{\infty}{\Omega}(g(n)) & \text{if } f(n)=\Theta(g(n)) \\
+				\mathcal{O}(g(n)) & \text{if } 0 \leq f(n) \leq cg(n) \\
+				\overset{\infty}{\Omega}(g(n)) & \text{if } 0 \leq cg(n) \leq f(n) \text{, for infinitely many integers } n \\
+			\end{cases}
+		\end{equation}
+		如果只有有限多个$n$使得$f(n) \geq cg(n) \geq 0$，那么当$n$趋进$\infty$时，必有$0 \leq f(n) \leq cg(n)$，即$f(n)=\mathcal{O}(g(n))$ \\
+		显然，用$\Omega$替换$\overset{\infty}{\Omega}$时不成立
+		
+	\item	Advantage: 可以刻画所有函数之间的关系 \\
+		Disadvantage: 刻画得不精确
+	
+	\item	For any two functions $f(n)$ and $g(n)$, we have if $f(n) = \Theta(g(n))$ then $f(n) = \mathcal{O}'(g(n))$ and $f(n) = \Omega(g(n))$ \\
+		But the converse is not true
+	
+	\item	$\overset{\sim}{\Omega}(g(n))=\{ f(n)$ : there exist positive constants $c, k$, and $n_0$ such that $0 \leq cg(n)\log^k(n) \leq f(n)$ for all $n \geq n_0 \}$ \\
+		$\overset{\sim}{\Theta}(g(n))=\{ f(n)$ : there exist positive constants $c_1, c_2, k_1, k_2$, and $n_0$ such that $0 \leq c_1g(n)\log^{k_1}(n) \leq f(n) \leq c_2g(n)\log^{k_2}(n)$ for all $n \geq n_0 \}$ \\
+		For any two functions $f(n)$ and $g(n)$, we have $f(n) = \overset{\sim}{\Theta}(g(n))$ if and only if $f(n)=\overset{\sim}{\mathcal{O}}(g(n))$ and $f(n)=\overset{\sim}{\Omega}(g(n))$
+\end{enumerate}
+

@@ -1,0 +1,18 @@
+\subsection*{Problem 3-2 Relative asymptotic growths}
+
+\begin{lrbox}{\tablebox}
+	\begin{tabular}{c  c | c | c | c | c | c |}
+		$A$ & $B$ & $\mathcal{O}$ & $o$ & $\Omega$ & $\omega$ & $\Theta$ \\\hline
+		$\log^k{n}$ & $n^{\epsilon}$ & Yes & Yes & No & No & No \\\hline
+		$n^k$ & $c^n$ & Yes & Yes & No & No & No \\\hline
+		$\sqrt{n}$ & $n^{\sin{n}}$ & No & No & No & No & No \\\hline
+		$2^n$ & $2^{n/2}$ & No & No & Yes & Yes & No \\\hline
+		$n^{\log{c}}$ & $c^{\log{n}}$ & Yes & No & Yes & No & Yes \\\hline
+		$\log{n!}$ & $\log{n^n}$ & Yes & No & Yes & No & Yes \\\hline
+	\end{tabular}
+\end{lrbox}
+
+\begin{center}
+\resizebox{0.7\textwidth}{!}{\usebox{\tablebox}}
+\end{center}
+
