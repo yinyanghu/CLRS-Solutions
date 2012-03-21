@@ -1,0 +1,30 @@
+\subsection*{Problem 13-1 Persistent dynamic sets}
+\begin{enumerate}
+	\item	Insertion: 仅改变新插入的节点和其所有ancestors \\
+		Deletion: 至多改变被删除的节点和其successor的ancestors
+	\item	调用$\proc{Persistent-Tree-Insert}(\attrib{T}{root}, k)$，返回$T'$
+		\begin{codebox}
+		\Procname{$\proc{Persistent-Tree-Insert}(t, k)$}
+		\li	\If $t = \const{NIL}$
+		\li	\Then
+				$\attrib{x}{key} \gets k$
+		\li		$\attrib{x}{left} \gets \attrib{x}{right} \gets \const{NIL}$
+		\li	\Else
+				$\attrib{x}{key} \gets \attrib{t}{key}$
+		\li		$\attrib{x}{left} \gets \attrib{t}{left}$
+		\li		$\attrib{x}{right} \gets \attrib{t}{right}$
+		\li		\If $k < \attrib{t}{key}$
+		\li		\Then
+					$\attrib{x}{left} \gets \proc{Persistent-Tree-Insert}(\attrib{t}{left}, k)$
+		\li		\Else
+					$\attrib{x}{right} \gets \proc{Persistent-Tree-Insert}(\attrib{t}{right}, k)$
+				\End
+			\End
+		\li	\Return $x$
+		\end{codebox}
+	\item	时间复杂度、空间复杂度都为$\mathcal{O}(h)$
+	\item	若有parent指针，则每插入、删除一次，则所有点都要copy一次，所以时间复杂度、空间复杂度都为$\Omega(n)$
+	\item	We can still find the parent pointers we need in $\mathcal{O}(1)$ time without using parent pointers by using a stack to record the ancestors of the node. \\
+		We can also maintain the properties of Persistent Red-Black Tree in $\mathcal{O}(\log{n})$ time.
+\end{enumerate}
+

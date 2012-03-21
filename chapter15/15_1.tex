@@ -1,0 +1,13 @@
+\subsection*{15-1 Longest simple path in a directed acyclic graph}
+\noindent Let $f(i)$ be the longest distant from vertex $s$ to vertex $i$ \\
+Recursive formulation:
+\begin{equation} \notag
+	f(i) = \max_{(j, i) \in E}\{f(j) + d_{ji}\} \\
+\end{equation}
+initial case:
+\begin{equation} \notag
+	f(s) = 0
+\end{equation}
+Visit every vertex in Graph $G$ by topological order \\
+Running time: $\mathcal{O}(V + E)$
+

@@ -1,0 +1,62 @@
+\subsection*{Problem 9-2 Weighted median}
+\begin{enumerate}
+	\item	Since all the element has same weight $w_i = 1 / n$, therefore the median of $x_1, x_2, \twodots, x_n$ is the weighted median of the $x_i$ for $i = 1, 2, \twodots, n$
+	\item	\begin{itemize}
+			\item[*]	Sorting the $n$ element into increasing order by $x_i$ values.....$\mathcal{O}(n \log n)$
+			\item[*]	Locate the weighted median of $n$ elements.....$\mathcal{O}(n)$
+		\end{itemize}
+		Therefore, the total running time is $\mathcal{O}(n \log n)$
+	\item	a linear-time median algorithm
+		\begin{codebox}
+		\Procname{$\proc{Weighted-Median}(X, p, r)$}
+		\li	$q \gets \proc{Randomized-Partition}(X, p, r)$
+		\li	$WL = \sum_{i = p}^{q - 1} X[i]$
+		\li	$WR = \sum_{i = q + 1}^{r} X[i]$
+		\li	\If $WL < 1 / 2$ and $WR \leq 1 / 2$
+			\Then
+		\li		\Return $q$
+			\End
+		\li	\If $WL \geq 1 / 2$
+			\Then
+		\li		$w[q - 1] = w[q - 1] + WR$
+		\li		\Return $\proc{Weighted-Median}(X, p, q - 1)$
+			\End
+		\li	\If $WR > 1 / 2$
+			\Then
+		\li		$w[q + 1] = w[q + 1] + WL$
+		\li		\Return $\proc{Weighted-Meidan}(X, q + 1, r)$
+			\End
+		\end{codebox}
+		Analyse: \\
+		The recurrence for the worst-case running time of $\proc{Weighted-Median}$ is $T(n) = T(n / 2 + 1) + \Theta(n)$. The solution of the recurrence is $T(n) = \Theta(n)$
+	\item	Let $p$ be the weighted median. For any point x, let $f(x) = \sum_{i = 1}^{n} w_i \abs{x - p_i}$. We want to find a point $x$ such that $f(x)$ is minimum. \\
+		Assume $f(p)$ is minimum, we will prove that for any other point $x$, $f(p) \leq f(x)$. For any $p$ and $x$ such that $x > p$, we have
+		\begin{equation} \notag
+			f(x) - f(p) = \sum_{i = 1}^n w_i(\abs{x - p_i} - \abs{p - p_i})
+		\end{equation}
+		\begin{itemize}
+			\item[*]	When $p_i \leq p < x$, we have $\abs{x - p_i} - \abs{p - p_i} = x - p$
+			\item[*]	When $p < p_i \leq x$, we have $\abs{x - p_i} - \abs{p - p_i} \geq p - x$
+			\item[*]	When $p < x \leq p_i$, we have $\abs{x - p_i} - \abs{p - p_i} = p - x$
+		\end{itemize}
+		Therefore,
+		\begin{equation} \notag
+		\begin{aligned}
+			f(x) - f(p) & = \sum_{i = 1}^n w_i(\abs{x - p_i} - \abs{p - p_i}) \\
+					& \geq \sum_{p < p_i} w_i(p - x) + \sum_{p \geq p_i} w_i(x - p) \\
+					& = (x - p)(\sum_{p \geq p_i} w_i - \sum_{p < p_i} w_i) \\
+					& \geq 0
+		\end{aligned}
+		\end{equation}
+		For $p > x$, we have the same result. Thus, $f(x) \geq f(p)$, i.e. the weighted median is a best solution for the 1-dimensional post-office location problem.
+	\item	Find a point $p(x, y)$ to minimize the sum
+		\begin{equation} \notag
+			f(x, y) = \sum_{i = 1}^n w_i(\abs{x - x_i} + \abs{y - y_i})
+		\end{equation}
+		Since $d(a, b) = \abs{x_a - x_b} + \abs{x_b - y_b}$, it is obvious that
+		\begin{equation} \notag
+			\min_{x, y} f(x, y) = \min_x g(x) + \min_y h(y)
+		\end{equation}
+		Therefore, the best solution for the 2-dimensional post-office location problem reduce to the best solution for the 1-dimensional post-office location problem that $x$ and $y$ are independent.
+\end{enumerate}
+

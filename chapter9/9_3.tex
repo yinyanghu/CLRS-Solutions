@@ -1,0 +1,37 @@
+\subsection*{Problem 9-3 Small order statistics}
+\begin{enumerate}
+	\item	\begin{enumerate}
+			\item	divide all the elements into two group: \\
+				\begin{tabular}{lllll}
+					Group 1: & $a_1$ & $a_3$ & $a_5$ & $\cdots$ \\
+					Group 2: & $a_2$ & $a_4$ & $a_6$ & $\cdots$ \\
+				\end{tabular}
+			\item	pairwise compare the elements of the two group, and put the bigger of the two elements into a new group, called bigger group, and put the others into another group, called smaller group ..... $\lfloor \frac{n}{2} \rfloor$
+			\item	recursively find the $i$-th smallest element in the smaller group ..... $U_i(\lceil \frac{n}{2} \rceil)$
+			\item	meanwhile, we can get the smallest $i$ numbers in the smaller group and their corresponding elements in the bigger group
+			\item	the $i$-th smallest elements must be in these $2i$ elements, then find it ..... $T(2i)$
+		\end{enumerate}
+		Therefore, we have
+		\begin{equation} \notag
+			U_i(n) = \begin{cases}
+				T(n) & $if $ i \geq n / 2 \\
+				\lfloor \frac{n}{2} \rfloor + U_i(\lfloor \frac{n}{2} \rfloor) + T(2i) & $otherwise$
+			\end{cases}
+		\end{equation}
+	\item	the depth of recursion is $k = \mathcal{O}(log \frac{n}{i})$
+		therefore, if $i < n / 2$, then $U_i(n) = n + \mathcal{O}(T(2i) \log \frac{n}{i})$
+	\item	since $i$ is a constant less than $n / 2$, $U_i(n) = n + \mathcal{O}(\log n)$
+	\item	If $k > 2$, then $U_i(n) = n + O(T(2n / k) \log k)$ \\
+		If $k = 2$, i.e. $\log k = 1$, then
+		\begin{equation} \notag
+		\begin{aligned}
+			U_i(n)  & = T(n) \\
+				& = n + (T(n) - n) \\
+				& \leq n + (T(2i) - n) \\
+				& = n + (T(2n / k) - n) \\
+				& = n + (T(2n / k) \log k - n) \\
+				& = n + \mathcal{O}(T(2n / k) \log k)
+		\end{aligned}
+		\end{equation}
+\end{enumerate}
+

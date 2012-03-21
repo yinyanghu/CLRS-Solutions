@@ -1,0 +1,12 @@
+\subsection*{15-8 Image compression by seam carving}
+\begin{enumerate}
+	\item	$\mathcal{O}(3^m)$
+	\item	Let $f(i, j)$ denote the seam with the lowest disruption measure of $i \times j$ array $A[1..i, 1..j]$ \\
+		Recursive formulation:
+		\begin{equation} \notag
+			f(i, j) = \min\{f(i - 1, j - 1), f(i - 1, j), f(i - 1, j + 1)\} + d[i, j]
+		\end{equation}
+		The answer is find the $i$ such that minimize $f(m, i)$ \\
+		Running time: $\mathcal{O}(nm)$
+\end{enumerate}
+

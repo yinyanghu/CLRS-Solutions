@@ -1,0 +1,22 @@
+\subsection*{Problem 12-3 Average node depth in a randomly built binary search tree}
+\begin{enumerate}
+	\item	根据定义，有
+		\begin{equation} \notag
+			\sum_{x \in T} d(x, T) = P(T)
+		\end{equation}
+		所以
+		\begin{equation} \notag
+			\frac{1}{n} \sum_{x \in T} d(x, T) = \frac{1}{n} P(T)
+		\end{equation}
+	\item	$P(T) = P(T_L) + P(T_R) + n - 1$
+	\item	Randomly built binary search tree，随机一个节点作为树根，所以根据定义，有
+		\begin{equation} \notag
+			P(n) = \frac{1}{n} \sum_{i = 0}^{n - 1}(P(i) + P(n - i - 1) + n - 1)
+		\end{equation}
+	\item	\begin{equation} \notag
+			P(n) = \frac{2}{n} \sum_{k = 1}^{n - 1} P(k) + \frac{(n - 1)^2}{n} = \frac{2}{n} \sum_{k = 1}^{n - 1} P(k) + \Theta(n)
+		\end{equation}
+	\item	由Problem 7-3 Alternative quicksort analysis的分析，可得$P(n) = \mathcal{O}(n \log{n})$
+	\item	Binary Search Tree中的所有非Leaves节点对应着Quicksort中的Pivot
+\end{enumerate}
+

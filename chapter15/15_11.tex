@@ -1,0 +1,10 @@
+\subsection*{Problem 15-11 Inventory planning}
+\noindent Let $D(x) = \displaystyle{\sum_{i = 1}^{x}} d_i$ and $D(0) = 0$, therefore, $D(n) = D$ \\
+Let $f(i, j)$ denote the minimum cost of first $i$th month that manufactured $j$ machines \\
+Recursive formulation:
+\begin{equation} \notag
+	f(i, j) = \min_{j \geq k \geq D(i - 1)}\{f(i - 1, k) + \max\{0, j - k - m\} \cdot c\} + h(j - D(i)), \mbox{ for } D \geq j \geq D(i)
+\end{equation}
+The answer is $f(n, D)$ \\
+Running time: $\mathcal{O}(nD^2)$
+

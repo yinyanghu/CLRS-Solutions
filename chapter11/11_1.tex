@@ -1,0 +1,20 @@
+\subsection*{Problem 11-1 Longest-probe bound for hashing}
+\begin{enumerate}
+	\item	因为$n \leq m /2$，所以$\alpha = n / m \leq 1 / 2$，Random Variable $X$表示不成功查找所要probe的次数，所以$Pr\{X > k\} = Pr\{X \geq k + 1\} \leq {\alpha}^{(k + 1) - 1} = 2^{-k}$
+	\item	利用(a)中的结论，令$k = 2\log{n}$，第$i$次Insertion需要多于$2\log{n}$ probes的概率为$\mathcal{O}(2^{-k}) = \mathcal{O}(2^{-2\log{n}}) = \mathcal{O}(1 / n^2)$
+	\item	\begin{equation} \notag
+			Pr\{X > 2 \log{n}\} \leq \sum_{i = 1}^{n} Pr\{X_i > 2 \log{n}\} \leq n \cdot \frac{1}{n^2} = \frac{1}{n}
+		\end{equation}
+	\item	\begin{equation} \notag
+		\begin{aligned}
+			E[X]	& = \sum_{k = 1}^{n} k \cdot Pr\{X = k\} \\
+				& = \sum_{k = 1}^{\ceil{2 \log{n}}} k \cdot Pr\{X = k\} + \sum_{k = \ceil{2 \log{n}} + 1}^{n} k \cdot Pr\{X = k\} \\
+				& \leq \sum_{k = 1}^{\ceil{2 \log{n}}} \ceil{2 \log{n}} \cdot Pr\{X = k\} + \sum_{k = \ceil{2 \log{n}} + 1}^{n} n \cdot Pr\{X = k\} \\
+				& = \ceil{2 \log{n}} \sum_{k = 1}^{\ceil{2 \log{n}}} Pr\{X = k\} + n \sum_{k = \ceil{2 \log{n}} + 1}^{n} Pr\{X = k\} \\
+				& \leq \ceil{2 \log{n}} \cdot 1 + n \cdot (1 / n) \\
+				& = \ceil{2 \log{n}} + 1 \\
+				& = \mathcal{O}(\log{n})
+		\end{aligned}
+		\end{equation}
+\end{enumerate}
+

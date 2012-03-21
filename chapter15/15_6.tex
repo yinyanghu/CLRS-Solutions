@@ -1,0 +1,18 @@
+\subsection*{15-6 Planning a company party}
+\noindent Let $f(x, 0)$ denote the maximum sum of the conviviality ratings of the guests when the emplyee $x$ doesn't attend the party and $f(x, 1)$ denote the maximum sum of the conviviality ratings of the guests when the emplyee $x$ attends the party \\
+Recursive formulation:
+\begin{equation} \notag
+\begin{aligned}
+	&f(x, 0) = \sum_{y \in Son\{x\}} \max\{f(y, 0), f(y, 1)\} \\
+	&f(x, 1) = \sum_{y \in Son\{x\}} f(y, 0) + rating(x)
+\end{aligned}
+\end{equation}
+initial case: if $x$ is a leaf,
+\begin{equation} \notag
+\begin{aligned}
+	&f(x, 0) = 0 \\
+	&f(x, 1) = rating(x)
+\end{aligned}
+\end{equation}
+Running time: $\mathcal{O}(V + E)$
+

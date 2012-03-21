@@ -1,0 +1,25 @@
+\subsection*{Problem 13-2 Join operation on red-black trees}
+\begin{enumerate}
+	\item	(Omit!)
+	\item	因为$\attrib{T_1}{bh} \geq \attrib{T_2}{bh}$，根据Red-Black Tree的性质，从$T_1$的Root开始，若有Right-Child，则向Right-Child走，否则向Left-Child走，必然存在一个Black节点$y$使得$\attrib{y}{bh} = \attrib{T_2}{bh}$，且保证$y$是所有满足条件的节点中key最大的 \\
+		算法的时间复杂度：$\mathcal{O}(\log{n})$
+	\item	算法时间复杂度：$\mathcal{O}(1)$ \\
+		\begin{codebox}
+		\Procname{$\proc{RB-Join'}(T_y, x, T_2)$}
+		\li	$\attrib{z}{left} \gets T_y$
+		\li	$\attrib{z}{right} \gets T_2$ 
+		\li	$\attrib{z}{parent} \gets \attrib{T_y}{parent}$
+		\li	$\attrib{z}{key} \gets x$
+		\li	\If $\attrib{\attrib{T_y}{parent}}{left} = T_y$
+		\li	\Then
+				$\attrib{\attrib{T_y}{parent}}{left} \gets z$
+		\li	\Else
+				$\attrib{\attrib{T_y}{parent}}{right} \gets z$
+		\end{codebox}
+	\item	Red \\
+		因为树$T_y, T_2$的Root的颜色都为Black，如果$x$的parent的颜色也为Red，则将$x$的颜色置为Black，且将$T_y, T_2$的Root的颜色置为Red，递归向下调整，保证Black-Height不变 \\
+		时间复杂度：$\mathcal{O}(\log{n})$
+	\item	同理，若$\attrib{T_1}{bh} \leq \attrib{T_2}{bh}$，则用上述算法对称处理
+	\item	The running time of $\proc{RB-Join}$ is $\mathcal{O}(\log{n})$
+\end{enumerate}
+

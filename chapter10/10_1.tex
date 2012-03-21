@@ -1,0 +1,18 @@
+\subsection*{Problem 10-1 Comparisons among list}
+\begin{lrbox}{\tablebox}
+	\begin{tabular}{c | c | c | c | c |}
+		 & unsorted, singly linked & sorted, singly linked & unsorted, doubly linked & sorted, doubly linked  \\\hline
+		Search($L, k$) & $\mathcal{O}(n)$ & $\mathcal{O}(n)$ & $\mathcal{O}(n)$ & $\mathcal{O}(n)$  \\\hline
+		Insert($L, x$) & $\mathcal{O}(1)$ & $\mathcal{O}(n)$ & $\mathcal{O}(1)$ & $\mathcal{O}(n)$  \\\hline
+		Delete($L, x$) & $\mathcal{O}(n)$ & $\mathcal{O}(n)$ & $\mathcal{O}(1)$ & $\mathcal{O}(1)$  \\\hline
+		Successor($L, x$) & $\mathcal{O}(1)$ & $\mathcal{O}(1)$ & $\mathcal{O}(1)$ & $\mathcal{O}(1)$  \\\hline
+		Predecessor($L, x$) & $\mathcal{O}(n)$ & $\mathcal{O}(n)$ & $\mathcal{O}(1)$ & $\mathcal{O}(1)$  \\\hline
+		Minimum($L, x$) & $\mathcal{O}(n)$ & $\mathcal{O}(1)$ & $\mathcal{O}(n)$ & $\mathcal{O}(1)$  \\\hline
+		Maximum($L, x$) & $\mathcal{O}(n)$ & $\mathcal{O}(n)$ & $\mathcal{O}(n)$ & $\mathcal{O}(1)$  \\\hline
+	\end{tabular}
+\end{lrbox}
+
+\begin{center}
+\resizebox{1.2\textwidth}{!}{\usebox{\tablebox}}
+\end{center}
+

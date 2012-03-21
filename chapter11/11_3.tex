@@ -1,0 +1,11 @@
+\subsection*{Problem 11-3 Quadratic probing}
+\begin{enumerate}
+	\item	The probe sequence is <$h(k), h(k) + 1, h(k) + 1 + 2, h(k) + 1 + 2 + 3, \cdots$>
+		\begin{equation} \notag
+			h'(k, i) = (h(k) + \frac{1}{2} i + \frac{1}{2} i^2) \mod m.
+		\end{equation}
+	\item	We show that for any key $k$ and for any probe number $i$ and $j$ such that $0 \leq i < j < m$, we have $h'(k, i) \neq h'(k, j)$. \\
+		If assume that $h'(k, i) = h'(k, j)$, it yields a contradiction.
+		Therefore, this algorithm examines every table position in the worst case.
+\end{enumerate}
+

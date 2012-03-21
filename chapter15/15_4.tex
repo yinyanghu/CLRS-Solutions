@@ -1,0 +1,22 @@
+\subsection*{15-4 Printing neatly}
+\noindent Let $cost(i, j)$ denote the number of extra space characters at the end of the line which includes the $i \cdots j$-th word \\
+Therefore,
+\begin{equation} \notag
+	cost(i, j) = \begin{cases}
+		0,	& \mbox{if } j = n \mbox{ and } M - j + i - \displaystyle{\sum^{j}_{k = i}} l_k \geq 0 \\
+		\infty,	& \mbox{if } M - j + i - \displaystyle{\sum^{j}_{k = i}} l_k < 0 \\
+		\displaystyle{(M - j + i - \sum^{j}_{k = i} l_k)^3},	& \mbox{otherwise}
+	\end{cases}
+\end{equation}
+Let $f(i)$ be the minimum number of extra space characters after placing first $i$th words \\
+Recursive formulation:
+\begin{equation} \notag
+	f(i) = \min_{0 \leq j < i}\{f(j) + cost(j + 1, i)\}
+\end{equation}
+initial case:
+\begin{equation} \notag
+	f(0) = 0
+\end{equation}
+Running time: $\mathcal{O}(n^2)$ \\
+Space: $\mathcal{O}(n)$
+

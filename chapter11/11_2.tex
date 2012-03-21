@@ -1,0 +1,42 @@
+\subsection*{Problem 11-2 Slot-size bound for chaining}
+\begin{enumerate}
+	\item	\begin{equation} \notag
+			Q_k = (\frac{1}{n})^k (1 - \frac{1}{n})^{n -k} \binom{n}{k}
+		\end{equation}
+	\item	Let random variable $X_i$ denote the number of keys hash to slot $i$. Frome (a), we have $Pr\{X_i = k\} = Q_k$
+		\begin{equation} \notag
+		\begin{aligned}
+			P_k 	& = Pr\{M = k\} \\
+				& = Pr\{(\max_{1 \leq i \leq n} X_i) = k\} \\
+				& \leq \sum_{i = 1}^{n} Pr\{X_i = k\} \\
+				& = n Q_k
+		\end{aligned}
+		\end{equation}
+	\item	\begin{equation} \notag
+		\begin{aligned}
+			Q_k	& = (\frac{1}{n})^k (1 - \frac{1} {n})^{n -k} \frac{n!}{k!(n - k)!} \\
+				& < \frac{n!}{n^k k! (n - k)!} \\
+				& < \frac{1}{k!} \\
+				& < \frac{e^k}{k^k}
+		\end{aligned}
+		\end{equation}
+	\item	(Omit!)
+	\item	\begin{equation} \notag
+		\begin{aligned}
+			E[M]	& = \sum_{k = 0}^{n} k \cdot Pr\{M = k\} \\
+				& = \sum_{k = 0}^{k_0} k \cdot Pr\{M = k\} + \sum_{k = k_0 + 1}^{n} k \cdot Pr\{M = k\} \\
+				& \leq \sum_{k = 0}^{k_0} k_0 \cdot Pr\{M = k\} + \sum_{k = k_0 + 1}^{n} n \cdot Pr\{M = k\} \\
+				& = k_0 \sum_{k = 0}^{k_0} Pr\{M = k\} + n \sum_{k = k_0 + 1}^{n} Pr\{M = k\} \\
+				& = k_0 \cdot Pr\{M \leq k_0\} + n \cdot Pr\{M > k_0\}
+		\end{aligned}
+		\end{equation}
+		因为 $Pr\{M \leq k_0\} \leq 1$ 且
+		\begin{equation} \notag
+			Pr\{M > k_0\} = \sum_{k = k_0 + 1}^{n} Pr\{M = k\} < \sum_{k = k_0 + 1}^{n} \frac{1}{n^2} < n \cdot \frac{1}{n^2} = \frac{1}{n}
+		\end{equation}
+		所以，
+		\begin{equation} \notag
+			E[M] \leq k_0 \cdot 1 + n \cdot \frac{1}{n} = k_0 + 1 = \mathcal{O}(\log{n} / \log{\log{n}})
+		\end{equation}
+\end{enumerate}
+

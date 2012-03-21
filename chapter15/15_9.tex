@@ -1,0 +1,14 @@
+\subsection*{Problem 15-9 Breaking a string}
+\noindent Let $L[0] = 0$ and $L[m + 1] =  n$ \\
+Let $f(i, j)$ denote the lowest cost of breaks that breaking every break points in $L[i..j - 1]$ \\
+Recursive formulation:
+\begin{equation} \notag
+	f(i, j) = \min_{i < k < j} \{f(i, k) + f(k, j)\} + (L[j] - L[i])
+\end{equation} 
+initial case:
+\begin{equation} \notag
+	f(i, i + 1) = 0
+\end{equation}
+The answer is $f(0, m + 1)$
+Running time: $\mathcal{O}(m^3)$
+

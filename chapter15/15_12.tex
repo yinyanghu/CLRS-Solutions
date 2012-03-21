@@ -1,0 +1,10 @@
+\subsection*{Problem 15-12 Signing free-agent baseball players}
+\noindent For every free-agent player $x$, let $pos(x)$ denote the player's position, $cost(x)$ denote the amount of money it will cost to sign the player, and $vorp(x)$ denote the player's VORP \\
+Let $f(i, j)$ denote the maximum total VORP of the players signed for first $i$ position and used $j$ money \\
+Recursive formulation:
+\begin{equation} \notag
+	f(i, j) = \max_{k \mbox{ s.t. } pos(k) = i} \{f(i - 1, j), f(i - 1, j - cost(k)) + vorp(k)\}
+\end{equation}
+The answer is $f(N, X)$ \\
+Running time: $\mathcal{O}(\max(N, P)\cdot X)$
+

@@ -1,0 +1,12 @@
+\subsection*{Problem 15-10 Planning an investment strategy}
+\begin{enumerate}
+	\item	(Explicit)
+	\item	Let $f(k, i)$ denote in $k$ years and we inveset the $i$th investment at the $k$th year, the maximum amount of the monney \\
+		Recursive formualation:
+		\begin{equation} \notag
+			f(k, i) = \max_{j \neq i} \{f(k - 1, i) - f_1, f(k - 1, j) - f_2\} + d \cdot r_{ik}
+		\end{equation}
+	\item	Running time: $\mathcal{O}(years \cdot inverstments^2) = \mathcal{O}(n^2)$
+	\item	(Omit!)
+\end{enumerate}
+

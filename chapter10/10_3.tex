@@ -1,0 +1,20 @@
+\subsection*{Problem 10-3 Searching a sorted compact list}
+\begin{enumerate}
+	\item	因为在Compact-List-Search和Compact-List-Search'中RANDOM($1, n$)产生的序列相同，所以Compact-List-Search'的返回值与Compact-List-Search相同且执行for, while循环的总次数至少为$t$
+	\item	The expected runnning time of Compact-List-Search'($L, n, k, t$) is $\mathcal{O}(t + E[X_t])$
+	\item	\begin{equation} \notag
+		\begin{aligned}
+		E[X_t] & = \sum_{i = 0}^{n} i \cdot Pr\{X_t = i\} \\ & = \sum_{i = 1}^{n} Pr\{X_t \geq i\} \\ & \leq \sum_{i = 1}^{n} (1 - r / n)^t
+		\end{aligned}
+		\end{equation}
+	\item	\begin{equation} \notag
+			\sum_{r = 0}^{n - 1} r^t \leq \int_{0}^{n - 1} r^t dr \leq n^{t + 1}/ (t + 1)
+		\end{equation}
+	\item	\begin{equation} \notag
+			E[X_t] \leq \sum_{i = 1}^{n} (1 - r / n)^t = \frac{1}{n^t} \sum_{r = 0}^{n - 1} r^t \leq n / (t + 1)
+		\end{equation}
+	\item	Compact-List-Search'($L, n, k, t$) runs in $\mathcal{O}(t + E[X_t]) = \mathcal{O}(t + n / (t + 1)) = \mathcal{O}(t + n / t)$ expected time
+	\item	Compact-List-Search runs in $\mathcal{O}(\max(t, n / t)) = \mathcal{O}(\sqrt{n})$ expected time
+	\item 	如果有相同的key，随机会大量重复判断一些无用的值，使得渐进时间复杂度没有改进
+\end{enumerate}
+

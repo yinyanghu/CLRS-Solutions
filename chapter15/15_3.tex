@@ -1,0 +1,19 @@
+\subsection*{15-3 Bitonic euclidean traveling-salesman problem}
+\noindent First, sort the points by $x$-coordinate, <$P_1, P_2, .., P_n$> $(x_{P_i} < x_{P_{i + 1}})$ \\
+Let $P_{i, j}$ $(i < j)$ denote the bitonic path: $P_i \xrightarrow{left} P_1 \xrightarrow{right} P_j$ (a vertex-disjoint path) \\
+It means that the bitonic path $P_{i, j}$ $(i < j)$ includes all vertices $P_1, P_2, \cdots, P_j$ \\
+Let $f(i, j)$ $(i \leq j \leq n)$ be the length of the shortest bitonic path $P_(i, j)$ \\
+Recursive formulation:
+\begin{equation} \notag
+\begin{cases}
+	f(i, j) = f(i, j - 1) + \abs{P_{j - 1, j}} & \mbox{if } (i < j - 1) \\
+	f(i - 1, i) = \displaystyle{\min_{1 \leq k < i - 1}} \{f(k, i - 1) + \abs{P_k P_i}\} \\
+	f(i, i) = f(i - 1, i) + \abs{P_{i - 1}P_i}
+\end{cases}
+\end{equation}
+initial case:
+\begin{equation} \notag
+	f(1, 2) = \abs{P_1 P_2}
+\end{equation}
+Running time: $\mathcal{O}(n^2)$
+

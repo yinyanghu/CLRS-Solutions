@@ -1,0 +1,49 @@
+\subsection*{Problem 12-4 Number of different binary trees}
+\begin{enumerate}
+	\item	根据定义，空树的个数为1，即$b_0 = 1$，且通过选取树中$n$个节点作为树的根，可得
+		\begin{equation} \notag
+			b_n = \sum_{k = 0}^{n - 1} b_k b_{n - 1 - k} \ \ (n \geq 1)
+		\end{equation}
+	\item	由
+		\begin{equation} \notag
+		\begin{aligned}
+			B(x) = \sum_{n = 0}^{\infty} b_n x^n \\
+			b_n = \sum_{k = 0}^{n - 1} b_k b_{n - 1 - k}
+		\end{aligned}
+		\end{equation}
+		可得
+		\begin{equation} \notag
+			B(x) = xB(x)^2 + 1
+		\end{equation}
+		解得
+		\begin{equation} \notag
+			B(x) = \frac{1}{2x} (1 - \sqrt{1 - 4x})
+		\end{equation}
+	\item	通过对$\sqrt{1 - 4x}$进行Taylor展开，可得 \\ 
+		\begin{equation} \notag
+			\sqrt{1 - 4x} = 1 - \frac{2}{1!}x - \frac{4}{2!}x^2 - \frac{24}{3!}x^3 - \frac{240}{4!}x^4 - \cdots
+		\end{equation}
+		所以，
+		\begin{equation} \notag
+		\begin{aligned}
+			B(x) & = \frac{1}{2x}(\frac{2}{1!}x + \frac{4}{2!}x^2 + \frac{24}{3!}x^3 + \frac{240}{4!}x^4 + \cdots) \\
+				& = \frac{1}{1!} + \frac{2}{2!} + \frac{12}{3!}x^2 + \frac{120}{4!}x^3 + \cdots \\
+				& = \sum_{n = 1}^{\infty} \frac{(2n - 2)!}{n(n - 1)!(n - 1)!} x^{n - 1} \\
+				& = \sum_{n = 0}^{\infty} \frac{1}{n + 1} \binom{2n}{n} x^n \\
+				& = \sum_{n = 0}^{\infty} b_n x^n
+		\end{aligned}
+		\end{equation}
+		即
+		\begin{equation} \notag
+			b_n = \frac{1}{n + 1} \binom{2n}{n}
+		\end{equation}
+	\item	通过Stirling‘s approximation
+		\begin{equation} \notag
+			n! = \sqrt{2 \pi n}(\frac{n}{e})^n(1 + \Theta(\frac{1}{n}))
+		\end{equation}
+		可得
+		\begin{equation} \notag
+			b_n = \frac{1}{n + 1} \binom{2n}{n} = \frac{4^n}{\sqrt{\pi}n^{\frac{3}{2}}}(1 + \mathcal{O}(\frac{1}{n}))
+		\end{equation}
+\end{enumerate}
+

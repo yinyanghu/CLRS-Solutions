@@ -1,0 +1,20 @@
+\subsection*{15-7 Viterbi algorithm}
+\begin{enumerate}
+	\item	Let $f(x, i)$ denote whether there exist a path in $G$ that begins at $x$ and has a sequence <$\sigma_1, \sigma_2, \cdots, \sigma_i$> as it label \\
+		Recursive formulation:
+		\begin{equation} \notag
+			f(x, i) = \bigvee_{y \mbox{ s.t. } \sigma(y, x) = \sigma_i } f(y, i - 1)
+		\end{equation}
+		initial case:
+		\begin{equation} \notag
+			f(x, 0) = true
+		\end{equation}
+		Running time: $\mathcal{O}(kn^2)$
+	\item	Let $f(x, i)$ denote the maximum probability of a path in $G$ that begins at $x$ and has a sequence <$\sigma_1, \sigma_2, \cdots, \sigma_i$> as it label \\
+		Recursive formulation:
+		\begin{equation} \notag
+			f(x, i) = \max_{y \mbox{ s.t. } \sigma(y, x) = \sigma_i}\{f(y, i - 1) \cdot p(y, x)\}
+		\end{equation}
+		Running time: $\mathcal{O}(kn^2)$
+\end{enumerate}
+

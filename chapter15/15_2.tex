@@ -1,0 +1,13 @@
+\subsection*{15-2 Longest palindrome subsequence}
+\noindent Let $f(i, j)$ be the length of the longest palindrome subsequence from the $i$th character to the $j$th character \\
+Recursive formulation:
+\begin{equation} \notag
+	f(i, j) = \begin{cases}
+		1,	& \mbox{if } i = j \\
+		0,	& \mbox{if } i > j \\
+		f(i + 1, j - 1) + 2,	& \mbox{if } a_i = a_j \\
+		\max\{f(i + 1, j), f(i, j - 1)\},	& \mbox{otherwise} \\
+	\end{cases}
+\end{equation}
+Running time: $\mathcal{O}(n^2)$
+

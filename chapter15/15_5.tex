@@ -1,0 +1,30 @@
+\subsection*{15-5 Edit distance}
+\begin{enumerate}
+	\item	Let $X_i = x[1 .. i]$ and $Y_i = y[1 .. y]$ and $f(i ,j)$ denote the minimum cost of transformating $X_i$ to $Y_j$ \\
+		Recursive formulation:
+		\begin{equation} \notag
+			f(i, j) = \min \begin{cases}
+				f(i - 1, j - 1) + cost(copy),	& \mbox{if } x[i] = y[j] \\
+				f(i - 1, j - 1) + cost(replace),& \mbox{if } x[i] \neq y[j] \\
+				f(i - 1, j) + cost(delete) \\
+				f(i, j - 1) + cost(insert) \\
+				f(i - 2, j - 2) + cost(twiddle),& \mbox{if } i, j \geq 2,x[i] = y[j - 1],\mbox{and } x[i - 1] = y[j] \\
+				\displaystyle{\min_{0 \leq k < m}} \{f(k, n)\} + cost(kill), & \mbox{if } i = m \mbox{ and } j = n
+			\end{cases}
+		\end{equation}
+		initial case:
+		\begin{equation} \notag
+			f(0, 0) = 0
+		\end{equation}
+		Running time and Space: $\mathcal{O}(nm)$
+	\item	\begin{equation} \notag
+		\begin{aligned}
+			&cost(copy) = -1 \\
+			&cost(replace) = 1 \\
+			&cost(delete) = 2 \\
+			&cost(insert) = 2
+		\end{aligned}
+		\end{equation}
+		maximize $\rightarrow$ minimize
+\end{enumerate}
+
