@@ -1,0 +1,15 @@
+\subsection*{Problem 22-1 Classifying edges by breadth-first search}
+\begin{enumerate}
+	\item	\begin{enumerate}
+			\item	对一个无向图进行BFS的时候，若有back edge或是forward edge，利用BFS的性质和无向图的性质，其在BFS Tree中都是tree edge
+			\item	对于一条tree edge $(u, v)$，我们有$\attrib{v}{\pi} = u$，即利用BFS性质，可得$\attrib{v}{d} = \attrib{u}{d} + 1$
+			\item	若边$(u, v)$是cross edge，则当我们访问$u$的时候，$v$必然已经进入队列，否则$(u, v)$为tree edge；由Lemma 22.3，我们有$\attrib{v}{d} \leq \attrib{u}{d} + 1$；由Corollary 22.4，我们有$\attrib{v}{d} \geq \attrib{u}{d}$，即$\attrib{v}{d} = \attrib{u}{d}$ or $\attrib{v}{d} = \attrib{u}{d} + 1$
+		\end{enumerate}
+	\item	\begin{enumerate}
+			\item	在BFS过程中forward edge即为tree edge
+			\item	与无向图相同
+			\item	在BFS过程中，对于任意边$(u, v)$均满足$\attrib{v}{d} \leq \attrib{u}{d} + 1$
+			\item	易得对于所有$v$，有$\attrib{v}{d} \geq 0$，因为$(u, v)$是back edge，即$v$是$u$的祖先，所以有$\attrib{v}{d} \leq \attrib{u}{d}$，即$0 \leq \attrib{v}{d} \leq \attrib{u}{d}$
+		\end{enumerate}
+\end{enumerate}
+

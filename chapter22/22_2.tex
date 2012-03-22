@@ -1,0 +1,12 @@
+\subsection*{Problem 22-2 Articulation points, bridges, and biconnected components}
+\begin{enumerate}
+	\item	若$G_{\pi}$的root只有一个儿子，在删除root之后，图的连通度不会增加，即不是articulation points；若$G_{\pi}$的root有多于两个儿子，在删除root之后，图的连通度会增加，即$G_{\pi}$是articulation points
+	\item	若$v$为articulation points，则$v$的儿子中必然有一个儿子，使得其没有back edge连接到$v$的祖先；否则若$v$没有这样的儿子，由于是无向图，当删除结点$v$之后，图依然保持连通，即$v$不是articulation points；反之亦然
+	\item	利用DFS，可以在$\mathcal{O}(V + E) = \mathcal{O}(E)$的时间内维护每个结点的$low$值
+	\item	Vetex $v$ is an articulation points iff. ($\attrib{v}{low} \geq \attrib{v}{d}$) or ($v$ is the root of $G_{\pi}$ and $v$ has at least two children in $G_{\pi}$). The running time of the algorithm is $\mathcal{O}(V + E) = \mathcal{O}(E)$
+	\item	设边$(u, v)$是图$G$的bridge，若边$(u, v)$在一个图$G$的一个simple cycle中，那么当删除边$(u, v)$之后，必然存在一条$u$到$v$的path，使得$u$和$v$依然保持连通，与边$(u, v)$是bridge矛盾，所以边$(u, v)$必然不在一个simple cycle之中；反之亦然
+	\item	Edge $e = (u, v)$ is a bridge iff. ($e$ is a tree edge) and ($\attrib{u}{d} < \attrib{v}{low}$). The running time of the algorithm is $\mathcal{O}(V + E) = \mathcal{O}(E)$
+	\item	Equivalence relation: $e_1 \sim e_2$ iff. ($e_1 = e_2$) or ($e_1$ and $e_2$ lie on some common simple cycle). Therefore, the biconnected components of $G$ partition the nonbridge edges of $G$.
+	\item	在DFS过程中，利用一个stack来存放所访问的边，若遇到articulation point或bridge，则将之后的所有的边pop，并将bcc标记成相同标号，运行时间$\mathcal{O}(V + E) = \mathcal{O}(E)$
+\end{enumerate}
+

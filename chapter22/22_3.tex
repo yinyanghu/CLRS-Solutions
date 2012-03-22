@@ -1,0 +1,6 @@
+\subsection*{Problem 22-3 Euler tour}
+\begin{enumerate}
+	\item	充分性易证，我们来证必要性：若对于任意结点$v$，均满足in-degree($v$) = out-degree($v$)，那么对于任意结点$v$，必然存在一个cycle包含结点$v$；我们可以利用上述引理，来扩展构造整个图的Euler tour
+	\item	利用上述引理，首先对一个结点找到一个包含它的cycle，然后从图中删除这个cycle上的所有边，继续找，直到图中不含有任何边；找每个环的公共结点，合并所有的环，构成原图的Euler tour
+\end{enumerate}
+
