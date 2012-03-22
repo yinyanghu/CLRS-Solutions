@@ -1,0 +1,16 @@
+\subsection*{Problem 17-3 Amortized weight-balanced trees}
+\begin{enumerate}
+	\item	\begin{enumerate}
+			\item	list all the elements in the subtree rooted at $x$ by inorder tree walk, i.e. a sorted list
+			\item	rebuild the subtree so that it becomes $1/2$-balanced
+		\end{enumerate}
+		The running time of the algorithm is $\Theta(\attrib{x}{size})$ and use $\mathcal{O}(\attrib{x}{size})$ auxiliary storage
+	\item	Since the height of the $\alpha$-balanced binary search tree is $\mathcal{O}(\log_{\frac{1}{\alpha}} n) = \mathcal{O}(\log n)$ \\
+		Therefore, performing a search in an $n$-node $\alpha$-balanced binary search tree takes $\mathcal{O}(\log n)$ worst-case time
+	\item	(Trivial!) Any binary search tree has nonnegative potential and that a $1/2$-balanced tree has potential 0
+	\item	\begin{equation} \notag
+			c = \frac{1}{2\alpha - 1}
+		\end{equation}
+	\item	After insert or delete a node from an $n$-node $\alpha$-balanced tree, we use $\mathcal{O}(1)$ amortized time to rebalance the tree
+\end{enumerate}
+

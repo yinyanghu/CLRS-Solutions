@@ -1,0 +1,31 @@
+\subsection*{Problem 17-5 Competitive analysis of self-organizing lists with move-to-front}
+\begin{enumerate}
+	\item	(Trivial!) The worst-case costs for H on an access sequence $\sigma$ is $C_H(\sigma) = \Omega(mn)$
+	\item	(Trivial!) By the defination of the $rank_L(x)$ and $c_i$, we have
+		\begin{equation} \notag
+			c_i = 2 \cdot rank_L(x) - 1
+		\end{equation}
+	\item	(Trivial!) By the defination of the $L^{*}_{i}$, $t^{*}_{i}$ and $c^{*}_{i}$, we have
+		\begin{equation} \notag
+			c^{*}_{i} = rank_{L^{*}_{i - 1}}(x) + t^{*}_{i}
+		\end{equation}
+	\item	Since an adjacent transposition change only one inversion, and $\Phi(L_i) = 2q_i$, therefore, a transposition either increases the potential by 2 or decreases the potential by 2
+	\item	(Trivial!) $rank_{L_{i - 1}}(x) = \abs{A} + \abs{B} + 1$ and $rank_{L^{*}_{i - 1}} = \abs{A} + \abs{C} + 1$
+	\item	For analysing the potential function of list $L_i$, i.e. $\Phi(L_i)$, we first assume that $L^{*}_{i} = L^{*}_{i - 1}$, therefore, $\Phi(L_i) - \Phi(L_{i - 1}) = 2(\abs{A} - \abs{B})$. Then, the transposition from list $L^{*}_{i - 1}$ to $L^{*}_{i}$, it at most increases potential by $2 \cdot t^{*}_{i}$. \\
+		Thus, we have
+		\begin{equation} \notag
+			\Phi(L_i) - \Phi(L_{i - 1}) \leq 2(\abs{A} - \abs{B} + t^{*}_{i})
+		\end{equation}
+	\item	\begin{equation} \notag
+		\begin{aligned}
+			\hat{c_i}	=& c_i + \Phi(L_i) - \Phi(L_{i - 1}) \\
+					=& 2 (\abs{A} + \abs{B} + 1) - 1 + \Phi(L_i) - \Phi(L_{i - 1}) \\
+					\leq& 2 (\abs{A} + \abs{B} + 1) - 1 + 2 (\abs{A} - \abs{B} + t^{*}_i) \\
+					=& 4 \abs{A} + 1 + 2 t^{*}_i \\
+					\leq& 4 (\abs{A} + \abs{C} + 1 + t^{*}_i) \\
+					=& 4 c^{*}_i
+		\end{aligned}
+		\end{equation}
+	\item	(Trivial!) The cost $C_{MTF}(\sigma)$ of access sequence $\sigma$ with move-to-front is at most 4 times the cost $C_H(\sigma)$ of $\sigma$ with any other heuristic H, assuming that both heuristics start with the same list
+\end{enumerate}
+

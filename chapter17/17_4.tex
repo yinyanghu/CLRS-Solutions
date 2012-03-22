@@ -1,0 +1,17 @@
+\subsection*{Problem 17-4 The cost of restructuring red-black trees}
+(From CLRS Solution)
+\begin{enumerate}
+	\item	(Omit!)
+	\item	All cases except or case 1 of $\proc{RB-INSERT-FIXUP}$ and case 2 of $\proc{RB-DELETE-FIXUP}$ are terminating
+	\item	Case 1 of $\proc{RB-INSERT-FIXUP}$ decreases the number of the red nodes by 1. Hence, $\Phi(T') = \Phi(T) - 1$
+	\item	Line 1-16 of $\proc{RB-INSERT-FIXUP}$ causes one node insertion and a unit increase in potential. \\
+		The nonterminating case of $\proc{RB-INSERT-FIXUP}$ causes there color changing and decreases the potential by 1. \\
+		The terminating case of $\proc{RB-INSERT-FIXUP}$ causes one rotation each and do not affect the potential.
+	\item	By the assumption that 1 unit of potenital can pay for the structural modifications performed by and of the three cases of $\proc{RB-INSERT-FIXUP}$, we can conclude that the amortized number of structural modifications performed by any call of $\proc{RB-INSERT}$ is $\mathcal{O}(1)$
+	\item	$\Phi(T') \leq \Phi(T) - 1$ for all nonterminating cases of $\proc{RB-INSERT-FIXUP}$. \\
+		The amortized number of structural modifications performed by any call of $\proc{RB-INSERT-FIXUP}$ is $\mathcal{O}(1)$
+	\item	$\Phi(T') \leq \Phi(T) - 1$ for all nonterminating cases of $\proc{RB-DELETE-FIXUP}$. \\
+		The amortized number of structural modifications performed by any call of $\proc{RB-DELETE-FIXUP}$ is $\mathcal{O}(1)$
+	\item	Since the amortized number of strutural modification in each operation is $\mathcal{O}(1)$, any sequence of $m$ $\proc{RB-INSERT}$ and $\proc{RB-DELETE}$ operations performs $\mathcal{O}(m)$ structural modifications in the worst case
+\end{enumerate}
+

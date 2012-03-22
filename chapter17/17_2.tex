@@ -1,0 +1,33 @@
+\subsection*{Problem 17-2 Making binary search dynamic}
+\begin{enumerate}
+	\item	Using binary search to search each sorted array one by one, until find the element that we search \\
+		The running time of the worst case:
+		\begin{equation} \notag
+		\begin{aligned}
+			T(n)	=& \Theta(\log 1 + \log 2 + \log 2^2 + \cdots + \log 2^{k - 1}) \\
+				=& \Theta(0 + 1 + \cdots + (k - 1)) \\
+				=& \Theta(\frac{1}{2}k(k - 1)) \\
+				=& \Theta(\log^2 n)
+		\end{aligned}
+		\end{equation}
+		Therefore, the running time of the worst case is $\Theta(\log^2 n)$
+	\item	\begin{enumerate}
+			\item	create a new sorted array of size 1, $A'_0$, containing the new element to be inserted
+			\item	if $A_0$ is empty, then we replace $A_0$ by $A'_0$; Otherwise, we merge the two sorted array into another sorted array, $A'_1$
+			\item	repeat these step, until for some $i$ that $A_i$ is empty
+		\end{enumerate}
+		The amortized running time of the worst case: \\
+		
+		We use accounting method to analyse the running time. We can charge $k$ to insert an element. 1 pays for the insertion, and we put $(k - 1)$ on the inserted from to pay for it being involved in merges later on. \\
+		And it can move to a higher-indexed array at most $k - 1$ times, so the $k - 1$ on the item suffices to pay for all the times it will never be involved in merges. \\
+		Therefore, the amortized running time of the worst case is $\mathcal{O}(\log n)$
+	\item	\begin{enumerate}
+			\item	find the smallest $j$ for which the array $A_j$ with $2^j$ elements is full \\
+				Let $y$ be the last element of $A_j$
+			\item	find $x$, assume it is in $A_i$
+			\item	delete $x$ from $A_i$ and insert $y$ into $A_i$ with correct place
+			\item	divide $A_j$(left $2^j - 1$ elements) into $A_0, A_1, \cdots, A_{j - 1}$
+		\end{enumerate}
+		The running time is $\Theta(n)$
+\end{enumerate}
+
