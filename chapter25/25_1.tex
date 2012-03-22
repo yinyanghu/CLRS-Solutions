@@ -1,0 +1,27 @@
+\subsection*{Problem 25-1 Transitive closure of a dynamic graph}
+\begin{enumerate}
+	\item	Let the edge $(u, v)$ is inserted into $G$. For all $i, j \in V$, if $t_{iu} \bigwedge t_{vj} = 1$, then we have $t_{ij} = 1$ \\
+		The running time is $\mathcal{O}(V^2)$
+	\item	Consider a example, the original graph is a chain, i.e. $G: v_1 \rightarrow v_2 \rightarrow ... \rightarrow v_n$. The matrix of the connectivity $T$ is a upper-triangular matrix. Now we insert an edge $(v_n, v_1)$, then the matrix of the connectivity $T$ is an all one matrix. The changing value is at least $\Omega(V^2)$. \\
+		Therefore, a graph $G$ and an edge $e$ such that $\Omega(V^2)$ time is required to update the transitive closure after the insertion of $e$ into $G$, no matter what algorithm is used.
+	\item	The algorithm:
+		\begin{codebox}
+		\Procname{$\proc{Insert}(u, v)$}
+		\li	\For $i \gets 1$ \To $\abs{V}$
+			\Do
+		\li		\If $t_{iu} = 1$ and $t_{iv} = 0$
+				\Then
+		\li			\For $j \gets 1$ \To $\abs{V}$
+					\Do
+		\li				\If $t_{vj} = 1$
+						\Then
+		\li					$t_{ij} \gets 1$;
+						\End
+					\End
+				\End
+			\End
+		
+		\end{codebox}
+		Since the condition of $t_{iv} = 0$ is true at most $\mathcal{O}(V^2)$ times, therefore, the running time of the algorithm is $\mathcal{O}(V^3)$
+\end{enumerate}
+

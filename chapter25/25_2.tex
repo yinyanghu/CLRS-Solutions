@@ -1,0 +1,15 @@
+\subsection*{Problem 25-2 Shortest paths in $\epsilon$-dense graphs}
+\begin{enumerate}
+	\item	In a $d$-ary min-heap, the asymptotic running time of \\
+		Insert: $\Theta(\log_d{n})$ \\
+		Extract-Min: $\Theta(d\log_d{n})$ \\
+		Decrease-Key: $\Theta(\log_d{n})$ \\ \\
+		If we choose $d = \Theta(n^\alpha)$ or some constant $0 < \alpha \leq 1$, the asymptotic running time of \\
+		Insert: $\Theta(\frac{1}{\alpha})$ \\
+		Extract-Min: $\Theta(\frac{d}{\alpha}) = \Theta(\frac{n^\alpha}{\alpha})$ \\
+		Decrease-Key: $\Theta(\frac{1}{\alpha})$
+	\item	$d = V^\epsilon$
+	\item	To solve the all-pairs shortest-paths problem on an $\epsilon$-dense directed graph $G = (V, E)$ with no negative-weight edges, we can run $\abs{V}$ times Dijkstra's algorithms described above, the total running time of the algorithm is $\mathcal{O}(VE)$
+	\item	Using Johnson's algorithm to reweight the graph $G = (V, E)$, and then execute the above algorithm. The running time of the algorithm is $\mathcal{O}(VE + VE) = \mathcal{O}(VE)$
+\end{enumerate}
+
