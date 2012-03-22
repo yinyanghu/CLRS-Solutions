@@ -1,0 +1,12 @@
+\subsection*{Problem 26-5 Maximum flow by scaling}
+\begin{enumerate}
+	\item	Since $C = \max_{(u, v) \in E}{c(u, v)}$, and there are at most $\abs{E}$ edges in graph $G$, therefore, a minimum cut of $G$ has capacity at most $C\abs{E}$
+	\item	Just ignore the edges whose capacity less than $K$ when finding an augmenting path. \\
+		It takes $\mathcal{O}(V + E) = \mathcal{O}(V + E)$ time
+	\item	Since when $K = 1$, the procedure $\proc{Max-Flow-By-Scaling(G, s, t)}$ is the typical Ford-Fulkerson algorithm. Since the Ford-Fulkerson algorithm returns a maximum flow, therefore, $\proc{Max-Flow-By-Scaling}$ returns a maximum flow
+	\item	Since there are at most $\abs{E}$ edges and each time line 4 is executed, the capacity of the residual network $G_f$ is at most $2K$. Thus, the capacity of a minimum cut of the residual network $G_f$ is at most $\abs{E} \times 2K = 2K\abs{E}$
+	\item	By part $\bf{d}$, the capacity of a minimum cut of the residual network $G_f$ is at most $2K\abs{E}$ each time line 4 is executed, i.e. the maximum flow of $G_f$ is at most $2K\abs{E}$. And each time the inner while loop finds an augmenting path of capacity at least $K$, the flow increases by at least $K$. \\
+		Thus, the inner while loop of lines 5-6 executes $\mathcal{O}(2K\abs{E}) / K = \mathcal{O}(E)$ times for each value of $K$
+	\item	By above arguments, we can easily obtain the running time of the procedure $\proc{Max-Flow-By-Scaling}$ is $\mathcal{O}(E^2\log{C})$
+\end{enumerate}
+

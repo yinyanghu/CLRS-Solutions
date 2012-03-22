@@ -1,0 +1,20 @@
+\subsection*{Problem 26-6 The Hopcroft-Karp bipartite matching algorithm}
+\begin{enumerate}
+	\item	Since $P$ is an augmenting path with respect to $M$, and the edges in $P$ that belong to $M$ is one less than the edges that not belong to $M$. Therefore, $\abs{M \oplus P} = \abs{M} + 1$ \\
+		Since $P_1, P_2, \cdots, P_k$ are vertex-disjoint augmenting paths with respect to $M$, so $M \oplus (P_1 \cup P_2 \cup \cdots \cup P_k) = \abs{M} + k$
+	\item	Since for all matching, every vertex's degree is at most 1, so every vertex in the graph $G' = (V, M \oplus M^{*})$ has degree at most 2. \\
+		Therefore, there are only simple paths or cycles in $G'$. \\
+		And edges in each such simple path or cycle belong alternately to $M$ or $M^{*}$, since each vertex can be only included by one edge in a matching. \\
+		Since $\abs{M} \leq \abs{M^{*}}$, then let $P = M - M \cap M^{*}$ and $P^{*} = M^{*} - M \cap M^{*}$. We have $\abs{M^{*}} - \abs{M} = \abs{P^{*}} - \abs{P}$, $P^{*} \cap P = \emptyset$ and $M \oplus M^{*} = P \cup P^{*}$ \\
+		For the graph $G'$, in the worst case, there is a augmenting path including all edges of $P$ and $\abs{P} + 1$ edges of $P^{*}$. Therefore, $M \oplus M^{*}$ contains $\abs{P^{*}} - (\abs{P} + 1) + 1 = \abs{P^{*}} - \abs{P} = \abs{M^{*}} - \abs{M}$ vertex-disjoint augmenting paths with respect to $M$. \\
+		Thus, $M \oplus M^{*}$ contains at least $\abs{M^{*}} - \abs{M}$ vertex-disjoint augmenting paths with respect to $M$
+	\item	Since $P$ is vertex-disjoint from $P_1, P_2, \cdots, P_k$, so $M' = M \oplus (P_1 \cup P_2 \cup \cdots \cup P_k)$ does not affect the augmenting path $M$. Therefore, $P$ is also an augmenting path with respect to $M$. \\
+		And since $\{P_1, P_2, \cdots, P_k\}$ is a maximal set of vertex-disjoint augmenting paths of the shortest length $l$, it implies that $\abs{P} > l$
+	\item	It's easy to obtain $A = (P_1 \cup P_2 \cup \cdots \cup P_k) \oplus P$ from the property of the operation symmetric difference $\oplus$ \\
+		Since $(M \oplus M') \oplus P = M \oplus (M' \oplus P)$, then let $M'' = M' \oplus P$, so $M''$ is also a matching and $\abs{M''} = \abs{M} + k + 1$. By part $\bf{b}$, $A$ contains at least $\abs{M''} - \abs{M} = \abs{M} + k + 1 - \abs{M} = k + 1$ vertex-disjoint augmenting paths with respect to $M$. Thus $\abs{A} \geq (k + 1)l$ \\
+		Therefore, $P$ has more than $l$ edges
+	\item	Since the augmenting path with respect to $M$ has $l$ edges, so we there are at most $\abs{V}/(l + 1)$ augmenting paths. And the matching increases 1 for each augmenting. Therefore, the maximum matching is at most $\abs{M} + \abs{V}/(l + 1)$
+	\item	When after iteration $\sqrt{\abs{V}}$ times, the length of the augmenting path is at least $\sqrt{\abs{V}}$ and the $M$ can grow at most $\abs{V} / (\sqrt{\abs{V}} + 1) < \sqrt{\abs{V}}$. Thus, the number of $\bf{repeat}$ loop iterations in the algorithm is at most $2\sqrt{\abs{V}}$
+	\item	By using DFS, the total running time of $\proc{Hopcroft-Karp}$ is $\mathcal{O}(\sqrt{V}E)$
+\end{enumerate}
+

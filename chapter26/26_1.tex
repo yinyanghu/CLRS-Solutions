@@ -1,0 +1,24 @@
+\subsection*{Problem 26-1 Escape problem}
+\begin{enumerate}
+	\item	For all vertices $v$ in graph $G = (V, E)$, we can split it into two corresponding vertices $v_0, v_1$ and there is a edge between two vertices $(v_0, v_1)$ \\
+		Now we rebuild the graph $G$ \\
+		$V' = \{v_0, v_1:$ if $v \in V\}$ and \\
+		$E' = \{(v_0, v_1):$ if $v \in V\} \cup \{(u_1, v_0):$ if $(u, v) \in E\}$. \\
+		We also define the capacity function, $c'(u, v)$ for all $(u, v) \in E'$ \\
+		\begin{equation} \notag
+		\begin{cases}
+			c'(v_0, v_1) = c(v)$, if  $v \in V \\
+			c'(u_1, v_0) = c(u, v)$, if $(u, v) \in E \\
+			c'(u, v) = 0$, otherwise$
+		\end{cases}
+		\end{equation}
+		Thus, the vertex capacities problem is reduced to an ordinary maximum-flow problem on a flow network
+	\item	The graph $G = (V, E)$, defined as \\
+		$V = \{s, t\} \cup \{v_{i,j}:$ for every $i, j = 1, 2, \cdots, n\}$ and \\
+		$E = \{(s, v):$ if $v$ is a starting point$\} \cup \{(v, t):$ if $v$ is a boundary point$\} \cup \{(u, v):$ if $u, v$ are adjacent points on the grid$\}$ \\
+		The capacity function for edges is $c(u, v) = 1$, for all $(u, v) \in E$ \\ \\
+		It's easy to find that $\abs{V} = \mathcal{O}(n^2)$ and $\abs{E} = \mathcal{O}(n^2 + m)$ \\ \\
+		A good implement algorithm for network flow can solved this problem in $\mathcal{O}(n^6)$ time
+		
+\end{enumerate}
+

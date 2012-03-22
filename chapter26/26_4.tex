@@ -1,0 +1,17 @@
+\subsection*{Problem 26-4 Updating maximum flow}
+\begin{enumerate}
+	\item	Just execute one more iteration of Ford-Fulkerson algorithm.  \\
+		Argument: \\
+		If the edge $(u, v)$ does not cross a minimum cut, then incresing the capacity of the edge $(u, v)$ does not change the capacity of the minimum cut as well as maximum flow. \\
+		If the edge $(u, v)$ does cross a minimum cut, then it increases the capacity of the minimum cut as well as maximum flow at most 1. \\
+		The both cases need only find augmenting path one more time. \\
+		
+		The running time of the algorithm is $\mathcal{O}(V + E)$
+	\item	\begin{enumerate}
+			\item	the new flow $f'(u, v) = f(u, v) - 1$
+			\item	if there is a augmenting path from $u$ to $v$, then augment an unit flow along the augmenting path \\
+				otherwise, find augmenting paths from $u$ to $s$ and from $t$ to $v$, decreasing an unit flow along the augmenting path
+		\end{enumerate}
+		The running time of the algorithm is $\mathcal{O}(V + E)$
+\end{enumerate}
+

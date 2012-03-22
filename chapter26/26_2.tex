@@ -1,0 +1,10 @@
+\subsection*{Problem 26-2 Minimum path cover}
+\begin{enumerate}
+	\item	To find a minimum path cover of a directed acyclic graph $G = (V, E)$, we construct the graph $G' = (V', E')$, where \\
+		$V' = \{x_0, x_1, \cdots, x_n\} \cup \{y_0, y_1, \cdots, y_n\}$, \\
+		$E' = \{(x_0, x_i):i \in V\} \cup \{(y_i, y_0):i \in V\} \cup \{(x_i, y_j):(i, j) \in E\}$, \\
+		and all edge in $E'$ have an unit capacity. Then the maximum-flow of graph $G'$ is $\abs{f}$, and the minimum path cover of the graph $G$ is $\abs{V} - \abs{f}$ \\
+		The running time of the algorithm is $\mathcal{O}(VE)$
+	\item	The above alogorithm doesn't work for directed graphs that contain cycles
+\end{enumerate}
+

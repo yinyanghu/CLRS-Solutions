@@ -1,0 +1,14 @@
+\subsection*{Problem 26-3 Algorithmic consulting}
+\begin{enumerate}
+	\item	Since the cut $(S, T)$ of $G$ is a finite-capacity, then there is no such edge where the capacity is infinite, i.e. edge $(A_i, J_j) \notin (S, T)$ for all $i = 1, 2, \cdots, n$, $j = 1, 2, \cdots, m$
+	\item	The maximum net revenue is $\sum_{i}{P_i} - \abs{c}$
+	\item	\begin{enumerate}
+			\item	find the maximum flow of the graph $G$, and obtain the residual network $G_f$, $\mathcal{O}((n + m)^2 \cdot (n + m + r))$
+			\item	find the minimum cut set $(S, T)$ by DFS the residual, $\mathcal{O}(n + m + r)$
+			\item	if edge $(s, A_i) \in (S, T)$, then we hire expert $i$ \\
+				if edge $(J_i, t) \notin (S, T)$, then we accept the job $i$ \\
+				$\mathcal{O}(n + m)$
+		\end{enumerate}
+		The total running time is determined by the implemention of the maximum flow algorithm
+\end{enumerate}
+
