@@ -1,0 +1,10 @@
+\subsection*{Problem 23-3 Bottleneck spanning tree}
+\begin{enumerate}
+	\item	我们证明原命题的逆否命题(contrapositive)，即无向图$G$中的一棵Spanning Tree $T$不是一棵Bottleneck Spanning Tree，那么$T$亦不是$G$的Minimum Spanning Tree \\
+		设边$e$是$T$中权值最大的边，且设边$e$两端连接的子树为$T_1, T_2$，因为$T$不是一棵Bottleneck Spanning Tree，所以必然存在一条边$e'$连接$T_1, T_2$，且$w(e') < w(e)$，所以$T$亦不是$G$的Minimum Spanning Tree
+	\item	从图$G$中删除所有权值大于$b$的边；若图依然连通，则存在一棵最大权值不大于$b$的Bottleneck Spanning Tree，否则不存在
+	\item	对$b$的值进行二分答案（在所有边的权值中），利用Part(b)中的算法来验证是否存在Bottleneck Spanning Tree； Running Time：$\mathcal{O}(E + \frac{E}{2}+ \frac{E}{4} + ...) = \mathcal{O}(E)$ \\
+		Any better solution ???
+		
+\end{enumerate}
+
