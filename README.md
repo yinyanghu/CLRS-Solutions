@@ -18,6 +18,7 @@ Thank you.
 
 Regards,
 [Jian Li](http://yinyanghu.github.io)
+
 lijianxp2005@gmail.com
 
 30 Oct, 2013
@@ -27,7 +28,9 @@ lijianxp2005@gmail.com
 The solutions to the book "Introduction to Algorithm, 3rd Edition".
 
 Author: Jian Li (ID:yinyanghu), an undergraduate student in Nanjing University, China
+
 E-mail: lijianxp2005@gmail.com
+
 Google Talk: lijianxp2005@gmail.com
 
 If you have any questions or intend to improve my solution, you could post an issue or fork a repository by yourself.
@@ -43,9 +46,5 @@ Mar 22, 2012:
 	Add chapter 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26
 
 To be continued...
-
-
-
-
 
 Jian Li, 2012
