@@ -48,3 +48,7 @@ Mar 22, 2012:
 To be continued...
 
 Jian Li, 2012
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/yinyanghu/clrs-solutions/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
