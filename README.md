@@ -6,7 +6,7 @@ Solutions to "Introduction to Algorithms, 3rd edition"
 Where to download the latest solution?
 ---
 
-Download are available [on this page](http://yinyanghu.github.io/clrs.html).
+Download are available [on this page](http://yinyanghu.github.io/solutions.html).
 
 The previous edition is also provided.
 
