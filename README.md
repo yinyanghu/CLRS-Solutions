@@ -1,3 +1,68 @@
+Solutions to "Introduction to Algorithms, 3rd edition"
+====
+
+
+
+Where to download the latest solution?
+---
+
+Download are available [on this page](http://yinyanghu.github.io/clrs.html).
+
+The previous edition is also provided.
+
+
+How to compile it?
+---
+
+```
+$ git clone git@github.com:yinyanghu/CLRS-Solutions.git
+$ cd CLRS-Solutions
+$ ./build
+```
+
+And then you could find `clrs.pdf` in your directory.
+
+
+Find typos, errors or have other solutions?
+---
+
+You could directly pull an issue on the Github, or send the email to me.
+
+I would fix it/append your solution as soon as possible.
+
+Thanks for your contribution.
+
+Jian Li (yinyanghu)
+
+[lijianxp2005@gmail.com](lijianxp2005@gmail.com)
+
+
+License
+---
+
+This work may be distributed and/or modified under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+You may not use the material for commercial purposes.
+
+![cc](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)
+
+Log
+---
+
+* Update the LaTeX template
+* Add solutions for the problems in **Chapter 1**
+
+Jun 7, 2014
+
+-----------------------------------------------
+
+It's time to update my solutions. Cheers!
+
+[Jian Li](http://yinyanghu.github.io)
+
+Jun 6, 2014
+
+-----------------------------------------------
+
 Hello everyone!
 
 It's a long time since I updated my solutions last time.
@@ -17,11 +82,12 @@ If you want to join me or discuss some problems with me, feel free to email me o
 Thank you.
 
 Regards,
+
 [Jian Li](http://yinyanghu.github.io)
 
 lijianxp2005@gmail.com
 
-30 Oct, 2013
+Oct 30, 2013
 
 -----------------------------------------------
 
@@ -51,4 +117,3 @@ Jian Li, 2012
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/yinyanghu/clrs-solutions/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
