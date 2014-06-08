@@ -1,0 +1,62 @@
+\section{Insertion sort on small arrays in merge sort}
+
+\subsection{a}
+
+The insertion sort can sort each sublist with length $k$ in $\Theta(k^2)$ worst-case time.
+So sorting all $n/k$ sublists could be completed in $\Theta(k^2 \cdot n/k) = \Theta(nk)$ worst-case time.
+
+
+\subsection{b}
+
+\paragraph{Naive}
+We could easily find a naive method.
+Let us try to think $n/k$ sublists as $n/k$ sorted queues.
+We scan all head elements of $n/k$ queues, and find the smallest element, then pop it from the queue.
+The running time of each scan is $\Theta(n/k)$.
+And we need pop all $n$ elements from $n/k$ queues.
+So this naive method costs $n \cdot \Theta(n/k) = \Theta(n^2/k)$ time.  
+
+\paragraph{Heap Sort}
+
+\yin{If you do not know what the Heap Sort is, you could temporarily skip this method before you read \yang{Chapter 6: Heapsort}.}\\
+
+Similarly, we could use a min-heap to maintain all head elements.
+There are at most $n/k$ elements in the heap, so each \yin{INSERT} and \yin{EXTRACT-MIN} operation takes $\mathcal{O}(\log(n/k))$ worst-case time.
+And every element enters and leaves the heap just once.
+Therefore, the overall worst-case running time is $n \cdot \mathcal{O}(\log(n/k)) = \mathcal{O}(n\log(n/k))$.
+
+\paragraph{Merge Sort}
+
+We could use the same procedure in Merge Sort, except the base case is a sublist with $k$ elements instead.
+We get the recurrence
+
+\begin{equation}\notag
+T(m) = \begin{cases}
+\Theta(1) & \mbox{if } m \leq k \\
+2T(m/2) + \Theta(m) & \mbox{otherwise}
+\end{cases}
+\end{equation}
+
+Draw a \yang{recursion tree}, and get the result
+
+\begin{equation}\notag
+\begin{aligned}
+T(n) &= 1/2 \cdot n/k \cdot 2k + 1/4 \cdot n/k \cdot 4k + \cdots + n\\
+&= n\log(n/k)
+\end{aligned}
+\end{equation}
+
+Therefore, the worst-case running time is $\Theta(n\log(n/k))$.
+
+
+\subsection{c}
+
+The largest value of $k$ is $\Theta(\log(n))$.
+The running time is $\Theta(nk + n\log(n/k)) = \Theta(n\log(n) + n\log(n/\log(n))) = \Theta(n\log(n))$, which has the same running time as standard merge sort. 
+
+
+\subsection{d}
+
+Since $k$ is the length of the sublist, we should choose the largest $k$ that Insertion Sort can sort faster than Merge Sort on the list with length $k$.\\
+
+In practice, \href{http://en.wikipedia.org/wiki/Timsort}{Timsort}, a hybrid sorting algorithm, use the exactly same idea with some complicated techniques.

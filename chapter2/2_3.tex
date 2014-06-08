@@ -1,0 +1,59 @@
+\section{Correctness of Horner's rule}
+
+\subsection{a}
+
+The running time is $\Theta(n)$.
+
+
+\subsection{b}
+
+\yin{Naive-Polynomial-Evaluation} shows the pseudocode of naive polynomial-evaluation algorithm.
+The running time is $\Theta(n^2)$.
+
+\begin{codebox}
+\Procname{$\proc{Naive-Polynomial-Evaluation}(P(x), x)$}
+\li	$\id{y} \gets 0$
+\li	\For $i \gets 0$ \To $n$
+\li	\Do
+		$\id{t} \gets 1$
+\li		\For $j \gets 1$ \To $i$
+\li		\Do
+			$\id{t} \gets \id{t} \cdot x$
+		\End
+\li		$\id{y} \gets \id{y} + \id{t} \cdot a_i$
+	\End
+\li	\Return $\id{y}$
+\end{codebox}
+
+
+\subsection{c}
+
+\paragraph{Initialization}
+Prior to the first iteration of the loop, we have $i = n$, so that $\sum_{k = 0}^{n - (i + 1)} a_{k + i + 1} x^k = \sum_{k = 0}^{-1} a_{k + n + 1} = 0$ consistent with $k = 0$. So loop invariant holds.
+
+\paragraph{Maintenance}
+By loop invariant, we have $y = \sum_{k = 0}^{n - (i + 1)} a_{k + i + 1} x^k$.
+Then lines 2-3 perform that
+
+\begin{equation}\notag
+\begin{aligned}
+y' &= a_i + x \cdot y\\
+&= a_i + x \cdot (\sum_{k = 0}^{n - (i + 1)} a_{k + i + 1} x^k)\\
+&= a_i + \sum_{k = 0}^{n - (i + 1)} a_{k + i + 1} x^{k + 1}\\
+&= \sum_{k = 0}^{n - i} a_{k + i} x^k
+\end{aligned}
+\end{equation}
+
+So decrementing $i$ reestablishes the loop invariant for the next iteration.
+
+\paragraph{Termination}
+At termination, $i = -1$. By loop invariant, we get the result $y = \sum_{k = 0}^n a_k x^k$.
+
+
+\subsection{d}
+
+The given code fragment correctly evaluates a polynomial characterized by the coefficients $a_0, a_1, \cdots, a_n$, i.e.
+
+\begin{equation}\notag
+y = \sum_{k = 0}^n a_k x^k = P(x)
+\end{equation}

@@ -1,0 +1,77 @@
+\section{Inversions}
+
+\subsection{a}
+
+(1, 5), (2, 5), (3, 5), (4, 5), (3, 4)
+
+
+\subsection{b}
+
+Array $\langle n, n - 1, n - 2, \cdots, 1 \rangle$ has $\binom{n}{2} = n(n - 1) / 2$ inversions.
+
+
+\subsection{c}
+
+The running time of Insertion Sort and the number of inversions in the input array are exactly same, since each move action in Insertion Sort eliminates exact one inversion.
+
+
+\subsection{d}
+
+We could modifiy the Merge Sort algorithm to count the number of inversions in the array.
+The key point is that if we find $L[i] > R[j]$, then each element of $L[i..]$(represent the subarray from $L[i]$) would be as an inversion with $R[j]$, since array $L$ is sorted.
+
+\yin{COUNTING-INVERSIONS} and \yin{INTER-INVERSIONS} shows the pseudocode of this algorithm.
+
+\begin{codebox}
+\Procname{$\proc{COUNTING-INVERSIONS}(A, left, right)$}
+\li	$\id{inversions} \gets 0$
+\li	\If $left < right$
+\li	\Then
+		$mid \gets \lfloor (left + right) / 2 \rfloor$
+\li		$\id{inversions} \gets \id{inversions} + \proc{COUNTING-INVERSIONS}(A, left, mid)$
+\li		$\id{inversions} \gets \id{inversions} + \proc{COUNTING-INVERSIONS}(A, mid + 1, right)$
+\li		$\id{inversions} \gets \id{inversions} + \proc{INTER-INVERSIONS}(A, left, mid, right)$
+	\End
+\li	\Return $\id{inversions}$
+\end{codebox}
+
+
+\begin{codebox}
+\Procname{$\proc{INTER-INVERSIONS}(A, left, mid, right)$}
+\li	$n_1 \gets mid - left + 1$
+\li	$n_2 \gets right - mid$
+\li	let $L[1 \twodots n_1+1]$ and $R[1 \twodots n_2 + 1]$ be new arrays
+\li	\For $i \gets 1$ \To $n_1$
+\li	\Do
+		$L[i] \gets A[left + i - 1]$
+	\End
+\li	\For $i \gets 1$ \To $n_2$
+\li	\Do
+		$R[i] \gets A[mid + i]$
+	\End
+\li	$L[n_1 + 1] \gets R[n_2 + 1] \gets \infty$
+\li	$i \gets j \gets 1$
+\li	$\id{inversions} \gets 0$
+\li	$\id{counted} \gets \const{false}$
+\li	\For $k \gets left$ \To $right$
+\li	\Do
+		\If $\id{counted} \gets \const{false}$ and $L[i] > R[j]$
+\li		\Then
+			$\id{inversions} \gets \id{inversions} + n_1 - i + 1$
+\li			$\id{counted} \gets \const{true}$
+		\End
+\li		\If $L[i] \leq R[j]$
+\li		\Then
+			$A[k] \gets L[i]$
+\li			$i \gets i + 1$
+\li		\ElseNoIf
+			$A[k] \gets R[j]$
+\li			$j \gets j + 1$
+\li			$\id{counted} \gets \const{false}$
+		\End
+	\End
+\li	\Return $\id{inversions}$
+\end{codebox}
+
+We can call \yin{COUNTING-INVERSIONS(A, 1, n)} to get the number of inversions in the array $A$.
+The worst-case running time is the same as Merge Sort, i.e. $\Theta(n\log(n))$.

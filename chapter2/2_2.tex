@@ -1,0 +1,59 @@
+\section{Correctness of bubblesort}
+
+\subsection{a}
+
+We also need to prove that $A'$ is a permutation of $A$.
+
+
+\subsection{b}
+
+Lines 2-4 maintain the following loop invariant:
+
+\begin{quote}
+At the start of each iteration of the \yang{for} loop of lines 2-4, $A[j]$ is the smallest element of $A[j..A.length]$.
+Moreover, $A[j..A.length]$ is a permutation of the initial $A[j..A.length]$.
+\end{quote}
+
+\paragraph{Initialization}
+Prior to the first iteration of the loop, we have $j = A.length$, so that the subarray $A[j..A.length]$ have only one element, $A[A.length]$.
+Trivially, $A[A.length]$ is the smallest element as well as a permutation of itself.
+
+\paragraph{Maintenance}
+To see that each iteration maintains the loop invariant, we assume that $A[j]$ is the smallest element of $A[j..A.length]$.
+For next iteration(decrementing $j$), if $A[j - 1] < A[j]$, i.e. $A[j - 1]$ is the smallest element of $A[j - 1..A.length]$, we have done and skip lines 3-4.
+Otherwise, lines 3-4 perform the exchange action to maintain the loop invariant.
+Also, it is still a valid permuation, since we only exchange two adjacent elements.
+
+\paragraph{Termination}
+At termination, $j = i$.
+By the loop invariant, $A[i]$ is the smallest element of $A[i..A.length]$ and $A[i..A.length]$ is a permutation of the initial $A[i..A.length]$.
+
+
+\subsection{c}
+
+Lines 1-4 maintain the following loop invariant:
+
+\begin{quote}
+At the start of each iteration of the \yang{for} loop lines 1-4, the subarray $A[1..i - 1]$ contains the smallest $i - 1$ elements of the initial array $A[1..A.length]$.
+And this subarray is sorted, i.e. $A[1] \leq A[2] \leq \cdots \leq A[i - 1]$.  
+\end{quote}
+
+\paragraph{Initialization}
+Initially, $i = 1$, i.e. $A[1..i - 1]$ is empty.
+The loop invariant trivially holds.
+
+\paragraph{Maintenance}
+By loop invariant, $A[1..i - 1]$ contains the smallest $i - 1$ elements and it is sorted.
+And lines 2-4 perform the action to move the smallest element of the subarray $A[i..A.length]$ into $A[i]$.
+So incrementing $i$ reestablishes the loop invariant for the next iteration.
+
+\paragraph{Termination}
+At termination, $i = A.length$.
+By the loop invariant, the subarray $A[1..A.length - 1]$ contains the smallest $A.length - 1$ elements.
+Also, this subarray is sorted.
+So the element $A[A.length]$ must be the largest element and the array $A[1..A.length]$ is sorted.
+
+
+\subsection{d}
+
+The worst-case running time of Bubble Sort is $\Theta(n^2)$, which is the same as Insertion Sort.

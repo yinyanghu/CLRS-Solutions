@@ -26,7 +26,7 @@ And then you could find `clrs.pdf` in your directory.
 Find typos, errors or have other solutions?
 ---
 
-You could directly pull an issue on the Github, or send the email to me.
+You could directly pull an issue on the Github, or send email to me.
 
 I would fix it/append your solution as soon as possible.
 
@@ -48,10 +48,10 @@ You may not use the material for commercial purposes.
 Log
 ---
 
+Jun 7, 2014
+
 * Update the LaTeX template
 * Add solutions for the problems in **Chapter 1**
-
-Jun 7, 2014
 
 -----------------------------------------------
 
