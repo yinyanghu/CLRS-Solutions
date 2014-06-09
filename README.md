@@ -17,7 +17,7 @@ How to compile it?
 ```
 $ git clone git@github.com:yinyanghu/CLRS-Solutions.git
 $ cd CLRS-Solutions
-$ ./build
+$ pdflatex clrs.tex
 ```
 
 And then you could find `clrs.pdf` in your directory.
@@ -47,6 +47,12 @@ You may not use the material for commercial purposes.
 
 Log
 ---
+
+Jun 8, 2014
+
+* Add solutions for the problems in **Chapter 2** 
+
+-----------------------------------------------
 
 Jun 7, 2014
 

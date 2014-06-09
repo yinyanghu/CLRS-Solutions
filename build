@@ -1,4 +1,0 @@
-#!/bin/bash
-
-pdflatex clrs
-pdflatex clrs
