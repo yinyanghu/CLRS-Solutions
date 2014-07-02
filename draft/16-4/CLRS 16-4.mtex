@@ -1,0 +1,29 @@
+Problem 16-4: Scheduling variations
+===
+
+a. 
+---
+
+This algorithm always gives an optimal answer, since it is actually an implementation of the algorithm scheme introduced in section 16.5. In this algorithm, we assign each task to a non-penalty latest empty time slot. If there is no such slot, we assign this task into an empty slot as late as possible. So this schedule is the extreme one among all the possible optimal schedules. If a task cannot be assigned to an available slot in this schedule, it also cannot be in all other possible schedules.
+
+b.
+---
+
+It is a perfect question. We could improve the running time in this case, since we only concentrate on a specific extreme schedule instead of check all possible schedules by the *lemma 16.12*. According to the algorithm, we assume that the set of input tasks has already been sorted into monotonically decreasing order by penalty, so bottleneck is the running time of finding the empty time slot.
+
+Now, we could reduce original problem into the following problem,
+
+> Given an initially empty array $$ A $$, each time we want to insert a key into the position $$ k $$ of array, if $$ A_k $$ is empty, we insert the key and done. Otherwise, we have to find the largest $$ i $$ such that $$ i < k $$ and $$ A_i $$ is empty. And then insert the key to $$ A_i $$. If no such $$ i $$ exists, return $$ -1 $$
+
+The problem also gives us a hint: **Disjoint-Set** (introduced in *Section 21.3*)
+
+Let $$ next(x) $$ denote the next empty position from position $$ x $$. 
+
+* Initially, let $$ \forall i, next(i) = i $$, i.e. the whole array is empty.
+
+* If we want to insert a key into the position $$ x $$, then we repeatedly find the position $$ x = next(x) $$ until $$ A_x $$ is empty, i.e. $$ x == next(x) $$, insert the key and let $$ next(x) = x - 1 $$. **OR** we cannot find an empty position, i.e. $$ x == -1 $$.
+
+So, it is easy to see that this structure is exactly the same as disjoint-set. Therefore, we could use the **union by rank** and **path compression** techniques to improve the running time of each finding operation to $$ \mathcal{O}(\alpha(n)) $$, where $$ n $$ is the length of array.
+
+Therefore, back to original problem, the running time of the algorithm is $$ \mathcal{O}(n \cdot \alpha(n)) $$ using this data structure.
+

@@ -21,3 +21,6 @@
 
 ## Latexmk
 *.fdb_latexmk
+
+## My update tool
+update
