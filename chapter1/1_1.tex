@@ -1,7 +1,7 @@
 \section{Comparison of running times}
 
 Table \ref{runtime} shows the solution.
-We assume the base of $\log(n)$ is 2.
+$\lg(n)$ is $\log(n)$ base 2.
 And we also assume that there are 30 days in a month and 365 days in a year.
 
 \paragraph{Note} Thanks to \href{https://github.com/Qumeric}{Valery Cherepanov(Qumeric)} who reported an error in the previous edition of solution.
@@ -10,10 +10,10 @@ And we also assume that there are 30 days in a month and 365 days in a year.
 \resizebox{\textwidth}{!}{
 \begin{tabular}{c|c|c|c|c|c|c|c}
         & 1 second & 1 minute & 1 hour & 1 day & 1 month & 1 year & 1 century\\\hline
-    $\log(n)$ & $2^{10^6}$ & $2^{10^6 \cdot 60}$ & $2^{10^6 \cdot 60 \cdot 60}$ & $2^{10^6 \cdot 60 \cdot 60 \cdot 24}$ & $2^{10^6 \cdot 60 \cdot 60 \cdot 24 \cdot 30}$ & $2^{10^6 \cdot 60 \cdot 60 \cdot 24 \cdot 365}$ & $2^{10^6 \cdot 60 \cdot 60 \cdot 24 \cdot 365 \cdot 100}$\\\hline
+    $\lg(n)$ & $2^{10^6}$ & $2^{10^6 \cdot 60}$ & $2^{10^6 \cdot 60 \cdot 60}$ & $2^{10^6 \cdot 60 \cdot 60 \cdot 24}$ & $2^{10^6 \cdot 60 \cdot 60 \cdot 24 \cdot 30}$ & $2^{10^6 \cdot 60 \cdot 60 \cdot 24 \cdot 365}$ & $2^{10^6 \cdot 60 \cdot 60 \cdot 24 \cdot 365 \cdot 100}$\\\hline
     $\sqrt{N}$ & $(10^6)^2$ & $(10^6 \cdot 60)^2$ & $(10^6 \cdot 60 \cdot 60)^2$ & $(10^6 \cdot 60 \cdot 60 \cdot 24)^2$ & $(10^6 \cdot 60 \cdot 60 \cdot 24 \cdot 30)^2$ & $(10^6 \cdot 60 \cdot 60 \cdot 24 \cdot 365)^2$ & $(10^6 \cdot 60 \cdot 60 \cdot 24 \cdot 365 \cdot 100)^2$\\\hline
     $n$ & $10^6$ & $10^6 \cdot 60$ & $10^6 \cdot 60 \cdot 60$ & $10^6 \cdot 60 \cdot 60 \cdot 24$ & $10^6 \cdot 60 \cdot 60 \cdot 24 \cdot 30$ & $10^6 \cdot 60 \cdot 60 \cdot 24 \cdot 365$ & $10^6 \cdot 60 \cdot 60 \cdot 24 \cdot 365 \cdot 100$\\\hline
-    $n\log(n)$ & $62,746$ & $2.8 \cdot 10^6$ & $1.33 \cdot 10^8$ & $2.75 \cdot 10^9$ & $7.18 \cdot 10^{10}$ & $7.97 \cdot 10^{11}$ & $6.86 \cdot 10^{13}$\\\hline
+    $n\lg(n)$ & $62,746$ & $2.8 \cdot 10^6$ & $1.33 \cdot 10^8$ & $2.75 \cdot 10^9$ & $7.18 \cdot 10^{10}$ & $7.97 \cdot 10^{11}$ & $6.86 \cdot 10^{13}$\\\hline
     $n^2$ & $1,000$ & $7,746$ & $60,000$ & $293,939$ & $1.6 \cdot 10^6$ & $5.6 \cdot 10^6$ & $5.6 \cdot 10^7$\\\hline
     $n^3$ & $100$ & $391$ & $1,533$ & $4,421$ & $13,737$ & $31,594$ & $146,646$\\\hline
     $2^n$ & $20$ & $26$ & $32$ & $36$ & $41$ & $45$ & $51$\\\hline
